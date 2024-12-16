@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('home_app.static', filename='img/logo.png') }}" type="image/x-icon">
+    {% block links %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <button class="button-menu"><img src="{{ url_for('home_app.static', filename='img/menu.png') }}" id="menu"></button>
+            <img src="{{ url_for('home_app.static', filename='img/logo.png') }}" class="logo">
+            <form class="search-form">
+                <div class="search-form__input-wrapper">
+                    <input rzsearchinput type="text" autocomplete="off" name="search" formcontrolname="text" class="search-form__input" placeholder="Я шукаю..." value>
+                </div>
+                <button class="search-form__micro"><img src="{{ url_for('home_app.static', filename='img/micro.png') }}" class="micro"></button>
+                <button class="submit">Знайти</button>
+            </form>
+            <ul class="header-list">
+                <li>
+                    <button class="lang-button">UA <img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
+                </li>
+                <li>
+                    <button class="button-list" id="button-user"><img src="{{ url_for('home_app.static', filename='img/user.png') }}" class="user"></button>
+                </li>
+                <li>
+                    <button class="button-list" id="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison.png') }}" class="comparison"></button>
+                </li>
+                <li>
+                    <button class="button-list"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}" class="cart"></button>
+                </li>
+            </ul>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+</body>
+</html>

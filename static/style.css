@@ -1,0 +1,314 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+body{
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+header{
+    position: fixed;
+    width: 100%;
+    height: 72px;
+    background-color: #221F1F;
+    z-index: 2;
+}
+.header-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+.button-menu{
+    display: flex;
+    background-color: #221F1F;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 16px;
+}
+.button-menu:hover{
+    cursor: pointer;
+    background-color: #443F3F;
+}
+#menu{
+    width: 24px;
+    height: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.logo{
+    width: 65px;
+    height: 60px;
+    margin-right: 24px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.search-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 0px;
+    margin-right: 8px;
+}
+.search-form__input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.search-form__input {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    z-index: 2;
+}
+.overlay{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.search-form__input:focus{
+    outline: none;
+}
+.search-form__micro{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    border-radius: 5px;
+}
+.micro{
+    width: 28px;
+    height: 28px;
+}
+.submit{
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #3e2be6;
+    color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.submit:hover{
+    cursor: pointer;
+    background-color: #594bf3;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    gap: 8px;
+}
+.header-list{
+    margin-left: 15px;
+}
+li{
+    display: flex;
+    align-items: center;
+}
+.lang-button{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    background-color: #221F1F;
+    color: white;
+    font-size: 15px;
+}
+.lang-button:hover{
+    cursor: pointer;
+}
+.arrow{
+    width: 16px;
+    height: 16px;
+}
+.button-list{
+    display: flex;
+    height: 40px;
+    width: 40px;
+    background-color: #221F1F;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.button-list:hover{
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #443F3F;
+}
+.user{
+    width: 32px;
+    height: 30px;
+}
+.comparison{
+    width: 26px;
+    height: 26px;
+}
+.cart{
+    width: 30px;
+    height: 30px;
+}
+
+@media(max-width: 480px){
+    .search-form__input::placeholder {
+        color: transparent;
+    }
+    .content-l{
+        padding: 8px;
+    }
+    .content-l{
+        width: 42%;;
+    }
+    .phone{
+        width: 100%;
+        height: 75%;
+    }
+    h2{
+        font-size: 9px;
+    }
+    h1{
+        font-size: 25px;
+    }
+    .blue-cart{
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (max-width: 767px){
+    .header-content{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .search-form {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .submit{
+        display: none;
+    }
+    .lang-button{
+        display: none;
+    }
+    #button-comparison{
+        display: none;
+    }
+    #button-user{
+        display: none;
+    }
+    ul{
+        gap: 0px;
+    }
+    main{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .filters-list{
+        display: none;
+    }
+}
+@media (min-width: 768px){
+    .search-form__input {
+        padding-left: 40px;
+        background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
+        background-repeat: no-repeat;
+        background-position: 8px center;
+    }
+    main{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .filters-list{
+        display: none;
+    }
+    .content-l{
+        width: 203px;;
+    }
+    .phone{
+        width: 180px;
+        height: 240px;
+    }
+    h2{
+        font-size: 10px;
+    }
+    h1{
+        font-size: 23px;
+    }
+    .blue-cart{
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (min-width: 1024px){
+    main{
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    .filters-list{
+        display: flex;
+    }
+    .filters-div{
+        border-right: 1px solid rgb(212 212 212);
+        border-bottom: 1px solid rgb(212 212 212);
+    }
+    .content-l{
+        width: 216px;;
+    }
+    .phone{
+        width: 220px;
+        height: 290px;
+    }
+    h2{
+        font-size: 12.2px;
+    }
+    h1{
+        font-size: 28px;
+    }
+    .blue-cart{
+        width: 23.5px;
+        height: 23.5px;
+    }
+}
+@media (min-width: 1370px){
+    .content-l{
+        width: 250px;;
+    }
+    .phone{
+        width: 250px;
+        height: 330px;
+    }
+    h2{
+        font-size: 14px;
+    }
+    h1{
+        font-size: 32px;
+    }
+    .blue-cart{
+        width: 27px;
+        height: 27px;
+    }
+}

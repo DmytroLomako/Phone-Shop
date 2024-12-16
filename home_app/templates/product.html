@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Lumin{% endblock %}
+{% block links %}
+    <link rel="shortcut icon" href="{{ url_for('home_app.static', filename='img/logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/product.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="image-div"><img src="{{ url_for('home_app.static', filename='img/phones/iphone-15.jpg') }}" id="phone"></div>
+        <div class="product-info">
+            <h1 class="phone-description">Мобільний телефон Apple iPhone 15 128GB Black</h1>
+            <div class="chosen-color-div">
+                <h1>Колiр: </h1>
+                <h1 class="chosen-color-text">Black</h1>
+            </div>
+            <div class="colors-list">
+                <button class="color-frame" id="color-frame-active"><div class="color" style="background-color: black;"></div></button>
+                <button class="color-frame"><div class="color" style="background-color: red;"></div></button>
+                <button class="color-frame"><div class="color" style="background-color: blue;"></div></button>
+                <button class="color-frame"><div class="color" style="background-color: pink;"></div></button>
+                <button class="color-frame"><div class="color" style="background-color: green;"></div></button>
+                <button class="color-frame"><div class="color" style="background-color: yellow;"></div></button>
+            </div>
+            <div class="chosen-memory-div">
+                <h1>Вбудована пам'ять: </h1>
+                <h1 class="chosen-memory-text">128 ГБ</h1>
+            </div>
+            <div class="memory-list">
+                <button class="memory-button">512 ГБ</button>
+                <button class="memory-button">256 ГБ</button>
+                <button class="memory-button" id="memory-button-active">128 ГБ</button>
+            </div>
+            <div class="buy-product-frame">
+                <p>Є в наявності</p>
+                <div class="buy-product">
+                    <h1>38 999 ₴</h1>
+                    <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
+                    <button class="buy-on-credit-button">Купити в кредит</button>
+                    <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>
+                    
+                </div>
+            </div>
+            <div class="additional-services-frame">
+                <p>Додаткові послуги</p>
+                <div class="additional-services">
+                    <div class="additional-service">
+                        <button class="button-confirm"></button>
+                        <img src="{{ url_for('home_app.static', filename='img/additional-services/garantee.webp') }}">
+                        <p>Сервіси гарантій</p>
+                    </div>
+                    <div class="additional-service">
+                        <button class="button-confirm"></button>
+                        <div class="resize-image-div"><img src="{{ url_for('home_app.static', filename='img/additional-services/films.webp') }}"></div>
+                        <p>Фільми, серіали, мультфільми, ТВ передачі онлайн</p>
+                    </div>
+                    <div class="additional-service">
+                        <button class="button-confirm"></button>
+                        <img src="{{ url_for('home_app.static', filename='img/additional-services/protect.webp') }}">
+                        <p>Сервіс для негарантійних випадків</p>
+                    </div>
+                    <div class="additional-service">
+                        <button class="button-confirm"></button>
+                        <img src="{{ url_for('home_app.static', filename='img/additional-services/free_choice.webp') }}">
+                        <p>Сервіс «Вільний вибір»</p>
+                    </div>
+                    <div class="additional-service">
+                        <button class="button-confirm"></button>
+                        <div class="resize-image-div"><img src="{{ url_for('home_app.static', filename='img/additional-services/office.webp') }}"></div>
+                        <p>Microsoft Office</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Lumin{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/catalog.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="filters-div">
+            <ul class="filters-list">
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/menu-dots.png') }}" class="logo-filter"><a href="">Всі телефони</a></li>
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/phone-brand/apple.png') }}" class="logo-filter"><a href="">Iphone</a></li>
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/phone-brand/samsung.png') }}" class="logo-filter-samsung"><a href="">Samsung</a></li>
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/phone-brand/huawei.png') }}" class="logo-filter"><a href="">Huawei</a></li>
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/phone-brand/xiaomi.png') }}" class="logo-filter"><a href="">Xiaomi</a></li>
+                <li class="filters-l"><img src="{{ url_for('home_app.static', filename='img/phone-brand/motorola.png') }}" class="logo-filter"><a href="">Motorola</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <ul class="content-list">
+                <a href="/product/" class="phone-link">
+                    <li class="content-l">
+                        <img src="{{ url_for('home_app.static', filename='img/phones/iphone-15.jpg') }}" class="phone">
+                        <h2>Мобільний телефон Apple iPhone 15 128GB Black</h2>
+                        <div class="price">
+                            <h1>38 999 ₴</h1>
+                            <button class="blue-cart-b">
+                                <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                            </button>
+                        </div>
+                    </li>
+                </a>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/samsung-s24.jpg') }}" class="phone">
+                    <h2>Мобільний телефон Samsung Galaxy S24 Ultra 12GB/1TB Titanium Violet</h2>
+                    <div class="price">
+                        <h1>61 599 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/motorola-g84.webp') }}" class="phone">
+                    <h2>Мобільний телефон Motorola Moto G84 8/256GB Midnight Blue</h2>
+                    <div class="price">
+                        <h1>7 999 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/huawei-10se.webp') }}" class="phone">
+                    <h2>Мобільний телефон Huawei Nova 10 SE 8/128GB Starry Black</h2>
+                    <div class="price">
+                        <h1>15 899 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/iphone-16.webp') }}" class="phone">
+                    <h2>Мобільний телефон Apple iPhone 16 Pro Max 256GB Desert Titanium</h2>
+                    <div class="price">
+                        <h1>70 999 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/samsung-m35.webp') }}" class="phone">
+                    <h2>Мобільний телефон Samsung Galaxy M35 5G 6/128GB Dark Blue</h2>
+                    <div class="price">
+                        <h1>11 999 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/nubia-5g.webp') }}" class="phone">
+                    <h2>Мобільний телефон Nubia Focus 5G 6/256GB Black</h2>
+                    <div class="price">
+                        <h1>5 499 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+                <li class="content-l">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/xiaomi-a3.webp') }}" class="phone">
+                    <h2>Мобільний телефон Xiaomi Redmi A3 3/64GB Midnight Black</h2>
+                    <div class="price">
+                        <h1>3 499 ₴</h1>
+                        <button class="blue-cart-b">
+                            <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <div class="overlay"></div>
+    <script src="{{ url_for('home_app.static', filename='js/catalog.js') }}"></script>
+{% endblock %}
