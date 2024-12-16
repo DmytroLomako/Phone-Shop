@@ -9,12 +9,12 @@
 
 {% block content %}
     <main>
-        <div id="image-div"><img src="{{ url_for('home_app.static', filename='img/phones/iphone-15.jpg') }}" id="phone"></div>
+        <div id="image-div"><img src="{{ url_for('home_app.static', filename='img/phones/' + product.image) }}" id="phone"></div>
         <div class="product-info">
-            <h1 class="phone-description">Мобільний телефон Apple iPhone 15 128GB Black</h1>
+            <h1 class="phone-description">{{ product.description }}</h1>
             <div class="chosen-color-div">
                 <h1>Колiр: </h1>
-                <h1 class="chosen-color-text">Black</h1>
+                <h1 class="chosen-color-text">{{ product.color }}</h1>
             </div>
             <div class="colors-list">
                 <button class="color-frame" id="color-frame-active"><div class="color" style="background-color: black;"></div></button>
@@ -26,7 +26,7 @@
             </div>
             <div class="chosen-memory-div">
                 <h1>Вбудована пам'ять: </h1>
-                <h1 class="chosen-memory-text">128 ГБ</h1>
+                <h1 class="chosen-memory-text">{{ product.memory }}</h1>
             </div>
             <div class="memory-list">
                 <button class="memory-button">512 ГБ</button>
@@ -36,7 +36,7 @@
             <div class="buy-product-frame">
                 <p>Є в наявності</p>
                 <div class="buy-product">
-                    <h1>38 999 ₴</h1>
+                    <h1>{{ product.price }}</h1>
                     <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
                     <button class="buy-on-credit-button">Купити в кредит</button>
                     <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>
