@@ -11,7 +11,7 @@
     <header>
         <div class="header-content">
             <button class="button-menu"><img src="{{ url_for('home_app.static', filename='img/menu.png') }}" id="menu"></button>
-            <img src="{{ url_for('home_app.static', filename='img/logo.png') }}" class="logo">
+            <a href="/"><img src="{{ url_for('home_app.static', filename='img/logo.png') }}" class="logo"></a>
             <form class="search-form">
                 <div class="search-form__input-wrapper">
                     <input rzsearchinput type="text" autocomplete="off" name="search" formcontrolname="text" class="search-form__input" placeholder="Я шукаю..." value>
@@ -36,5 +36,29 @@
         </div>
     </header>
     {% block content %}{% endblock %}
+    <div class="overlay"></div>
+    <div class="overlay-reg">
+        <div class="reg">
+            <h1>Вхід</h1>
+            <form action="/auth" method="post" class="reg-form">
+                <input type="hidden" name="class" value="auth-form">
+                <input type="text" name="login" placeholder="Ім'я">
+                <input type="password" name="password" placeholder="Пароль" id="password">
+                <button class="button-login">Увійти</button>
+            </form>
+            <p href="" class="reg-link-reg">Зареєструватися</p>
+        </div>
+        <div class="auth">
+            <h1>Реєстрація</h1>
+            <form action="/auth" method="post" class="reg-form">
+                <input type="hidden" name="class" value="reg-form">
+                <input type="text" name="login" placeholder="Ім'я">
+                <input type="password" name="password" placeholder="Пароль" id="password">
+                <button class="button-login">Зареєструватися</button>
+            </form>
+            <p class="reg-link-auth">Увійти</p>
+        </div>
+    </div>
+    <script src="{{ url_for('home_app.static', filename='js/catalog.js') }}"></script>
 </body>
 </html>
