@@ -14,33 +14,37 @@
             <h1 class="phone-description">{{ product.description }}</h1>
             <div class="chosen-color-div">
                 <h1>Колiр: </h1>
-                <h1 class="chosen-color-text">{{ product.color }}</h1>
+                <h1 class="chosen-color-text">{{ active_color }}</h1>
             </div>
-            <div class="colors-list">
-                <button class="color-frame" id="color-frame-active"><div class="color" style="background-color: black;"></div></button>
-                <button class="color-frame"><div class="color" style="background-color: red;"></div></button>
-                <button class="color-frame"><div class="color" style="background-color: blue;"></div></button>
-                <button class="color-frame"><div class="color" style="background-color: pink;"></div></button>
-                <button class="color-frame"><div class="color" style="background-color: green;"></div></button>
-                <button class="color-frame"><div class="color" style="background-color: yellow;"></div></button>
-            </div>
-            <div class="chosen-memory-div">
-                <h1>Вбудована пам'ять: </h1>
-                <h1 class="chosen-memory-text">{{ product.memory }}</h1>
-            </div>
-            <div class="memory-list">
-                <button class="memory-button">512 ГБ</button>
-                <button class="memory-button">256 ГБ</button>
-                <button class="memory-button" id="memory-button-active">128 ГБ</button>
-            </div>
+            <form class="colors-list" method="post">
+                {% for color in colors %}
+                    {% if 'active' in color %}
+                        <button class="color-frame" name="color_button" value="{{ color.split( )[0] }}" id="color-frame-active"><div class="color" style="background-color: {{ color.split( )[0] }};"></div></button>
+                    {% else %}
+                        <button class="color-frame" name="color_button" value="{{ color }}"><div class="color" style="background-color: {{ color }};"></div></button>
+                    {% endif %}
+                {% endfor %}
+            </form>
+                <div class="chosen-memory-div">
+                    <h1>Вбудована пам'ять: </h1>
+                    <h1 class="chosen-memory-text">{{ active_memory }}</h1>
+                </div>
+            <form method="post" class="memory-list">
+                {% for memory in memories %}
+                    {% if 'active' in memory %}
+                        <button class="memory-button" name="memory_button" value="{{ memory.split( )[0] }}" id="memory-button-active">{{ memory.split( )[0] }}</button>
+                    {% else %}
+                        <button class="memory-button" name="memory_button" value="{{ memory }}">{{ memory }}</button>
+                    {% endif %}
+                {% endfor %}
+            </form>
             <div class="buy-product-frame">
                 <p>Є в наявності</p>
                 <div class="buy-product">
                     <h1>{{ product.price }}</h1>
                     <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
                     <button class="buy-on-credit-button">Купити в кредит</button>
-                    <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>
-                    
+                    <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>         
                 </div>
             </div>
             <div class="additional-services-frame">

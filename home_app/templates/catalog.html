@@ -21,7 +21,7 @@
         <div class="content">
             <ul class="content-list">
                 {% for product in list_products %}
-                    <a href="/product/{{ product.id }}" class="phone-link">
+                    <a href="/product/{{ product.id }}{{ product.color }}&{{ product.memory }}" class="phone-link">
                         <li class="content-l">
                             <img src="{{ url_for('home_app.static', filename='img/phones/' + product.image) }}" class="phone">
                             <h2>{{ product.description }}</h2>
