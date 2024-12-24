@@ -1,6 +1,8 @@
 import flask
 from project.settings import database
 from .models import User
+from flask_login import current_user
+import flask_login
 
 def render_auth():
     if flask.request.method == 'POST':
@@ -14,9 +16,9 @@ def render_auth():
         elif flask.request.form.get('class') == 'auth-form':
             user = User.query.filter_by(username=username, password=password).first()
             if user:
-                print('User authenticated successfully')
+                flask_login.login_user(user)
             else:
-                flask.redirect('/')
+                return 'Неправильний логін або пароль'
         print(username, password)
         return flask.redirect('/')
     return flask.render_template('auth.html')

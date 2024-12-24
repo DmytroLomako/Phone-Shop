@@ -42,7 +42,10 @@
                 <p>Є в наявності</p>
                 <div class="buy-product">
                     <h1>{{ product.price }}</h1>
-                    <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
+                    <form action="" method="post">
+                        <input type="hidden" name="class" value="buy-form">
+                        <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
+                    </form>
                     <button class="buy-on-credit-button">Купити в кредит</button>
                     <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>         
                 </div>

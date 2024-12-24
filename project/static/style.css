@@ -100,7 +100,7 @@ header{
     backdrop-filter: blur(10px);
     z-index: 3;
 }
-.reg{
+.auth{
     width: 340px;
     height: 380px;
     background-color: hsla(0, 0%, 0%, 0.698);
@@ -112,7 +112,7 @@ header{
     gap: 40px;
     border-radius: 30px;
 }
-.auth{
+.reg{
     width: 340px;
     height: 380px;
     background-color: hsla(0, 0%, 0%, 0.698);
