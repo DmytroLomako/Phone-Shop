@@ -104,7 +104,7 @@ header{
     width: 340px;
     height: 380px;
     background-color: hsla(0, 0%, 0%, 0.698);
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     padding: 30px 0;
@@ -124,14 +124,32 @@ header{
     gap: 40px;
     border-radius: 30px;
 }
-.reg p, .auth p{
+.account{
+    width: 340px;
+    height: 277px;
+    background-color: hsla(0, 0%, 0%, 0.698);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    box-sizing: border-box;
+    gap: 40px;
+    border-radius: 30px;
+}
+.account button{
+    background-color: hsla(0, 0%, 0%, 0.698);
+}
+.reg p, .auth p, .account p{
     color: #5A95FF;
     text-decoration: none;
 }
-.reg h1, .auth h1{
+.account p{
+    font-size: 16px;
+}
+.reg h1, .auth h1, .account h1{
     color: white;
 }
-.reg p:hover, .auth p:hover{
+.reg p:hover, .auth p:hover, .account p:hover{
     cursor: pointer;
 }
 .reg-form{
@@ -148,6 +166,144 @@ header{
     font-size: 14px;
     border-radius: 20px;
     padding: 0 15px;
+}
+.cart-div{
+    display: none;
+    width: 900px;
+    height: fit-content;
+    max-height: 650px;
+    padding: 0 10px;
+    gap: 40px;
+    border-radius: 30px;
+    background-color: hsla(0, 0%, 0%, 0.698);
+    flex-direction: column;
+    align-items: flex-end;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto;
+}
+.cart-header{
+    width: 100%;
+    min-height: 80px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D4D4D4;
+}
+.cart-header h1{
+    color: white;
+    font-size: 32px;
+    font-weight: 500;
+}
+.cart-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 875px;
+    height: 150px;
+    gap: 10px;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #D4D4D4;
+    box-sizing: border-box;
+    background-color: white;
+}
+.image-handler{
+    width: 110px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-handler img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.cart-item-interaction{
+    width: fit-content;
+    height: 140px;
+    box-sizing: border-box;
+    padding: 10px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.cart-add-price{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 30px;
+    box-sizing: border-box;
+    align-items: center;
+}
+.cart-add-price h2{
+    width: max-content;
+    font-size: 24px;
+    margin: 0;
+}
+.delete-cart-item{
+    background-color: white;
+}
+.delete-cart-item img{
+    width: 25px;
+}
+.cart-add{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    gap: 10px;
+    padding: 2px 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+.cart-add input::-webkit-inner-spin-button, .cart-add input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+.cart-add input{
+    text-align: center;
+    width: 50px;
+    height: 25px;
+    border: 1px solid #D4D4D4;
+    border-radius: 20px;
+}
+.cart-total{
+    position: sticky;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 20px;
+    width: 420px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #080a87;
+    box-sizing: border-box;
+    border: 1px solid #5A95FF;
+}
+.cart-total h1{
+    color: white;
+    font-size: 36px;
+    font-weight: 500;
+}
+.process-order-button{
+    width: 210px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5A95FF;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
 }
 .password{
     background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z' fill='%23797878'/%3E%3C/svg%3E");

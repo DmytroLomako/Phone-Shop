@@ -38,21 +38,33 @@ passwordsInput.forEach(function(passwordInput){
 })
 
 const buttonUser = document.getElementById('button-user');
+const buttonCart = document.getElementById('button-cart');
 const overlayReg = document.querySelector('.overlay-reg');
-
-buttonUser.addEventListener('click', () => {
-    overlayReg.style.display = 'flex';
-});
-overlayReg.addEventListener('click', (e) => {
-    if (e.target === overlayReg) {
-        overlayReg.style.display = 'none';
-    }
-});
-
 const regLink = document.querySelector('.reg-link-reg');
 const authLink = document.querySelector('.reg-link-auth');
 const auth = document.querySelector('.auth');
 const reg = document.querySelector('.reg');
+const cart = document.querySelector('.cart-div');
+const account = document.querySelector('.account');
+
+buttonUser.addEventListener('click', () => {
+    overlayReg.style.display = 'flex';
+    account.style.display = 'flex';
+    auth.style.display = 'flex';
+});
+buttonCart.addEventListener('click', () => {
+    overlayReg.style.display = 'flex';
+    cart.style.display = 'flex';
+});
+overlayReg.addEventListener('click', (e) => {
+    if (e.target === overlayReg) {
+        overlayReg.style.display = 'none';
+        account.style.display = 'none';
+        cart.style.display = 'none';
+        auth.style.display = 'none';
+        reg.style.display = 'none';
+    }
+});
 
 regLink.addEventListener('click', () => {
     reg.style.display = 'flex';
