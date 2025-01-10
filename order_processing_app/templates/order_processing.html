@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Lumin{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('order_processing_app.static', filename='css/order_processing.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="main-order-div">
+            <h1>Оформлення замовлення</h1>
+            <div id="location-div">
+                <div id="logo-city-div">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect width="24" height="24" fill="url(#pattern0_99_320)"/><defs><pattern id="pattern0_99_320" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_99_320" transform="scale(0.015625)"/></pattern><image id="image0_99_320" width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEO0lEQVR4nO2aa4hVVRTHf4WTWjT0mBEp6KWWqUUFVhj1JaGslN44ijHUFKU9CMQP1Yf6kEQQaDlgJZYOiToFgZrYS1CpIK0sR81e9kH6Uo5aEpP2YME+sFjcs88+13v3Pfd2fnDgzpn/3msd7l5rr73OhZKSkpKSkpI6cxJwFTAf6Ad2AgeBIXcddPf6nUa0LcFZwNPAd8C/Oa99wFPAmTQhI4HngN+reHB7HQGeBUbQJEwBfqjwILLMVwL3A5OBTqDNXZ3unvyvz2nt+O+Bayg4jwPHjONfAV3A8BzzyLc9C/jazPUXMJeCstA4+5v7RiUBVsvJwIMVVoSEV6F4xjg4AIyp4fznAZ8ZGwsoCHcbxzYA7XVKrOuUnX+A6TSYC4DDyqlP65ytJY98ZMLsXBrIeuXMz8DowHGj3bf3kLvk86jAsVIX7Fd219Igpion/gauDRgjD/qJ09ttTu5tBW4OmOcGFwLJ2OtoAJuVA69laM8wqyXregc4PWPOPqV/j8hcavbm8zOW7ECF/fxj4FVgqfs8ZDRfZiTTccBxlRAvJCLPK0ff9uikBvjQZO5XXOVn6QAWmaUtq8bHBqWVM0c0tivDt3t0s8zDzwmYe6bJEXd6tLOVbguRaFcOHstYprqUfTGHjRfUuB0e3Si1YoZylttVc7Vy7puMGE10R3MWR5IA/1Djpd5I40elm0AEugLj/64csVwJvWvc4dFtUrrbiMDDyqBk8DTmKV1vFXZ61XjfCfAtpZOcUHceUwYXe3RzlO7NKuzoff4+j2650nUTOQT6PLrrlW5vFXZ0U0UqvzTeVboZROBGZXCjR9dmzvEyLpRb1bhB4BSPdpvSSjeq7oxVBg9kaBeZJufZAfPL1vaTGrcko2EyqLTRToa/KKO+xkeHWQU73faYxnhTNg9mnBIvV1o5IUajXxl+NEN7k+kTSsGyDLgFuMQ9tJwS33BnhER33Gl8LFD6VUSk23yrIV0jXdhkXUddSUzGOWOfGiPJORqnmtjzZemEicD7AQ//AXBZwHzT1JhfY5XBmsXKge0uIYUw2XWQpZ+wx12b3T0ps0MYBuxS9l+iAZzj3tokTjwS0fYTyu6hHO20mjNfOfIncGUEmxNdjkjsPkkDaXNJMHHm24BW1olwGrDbHJXFh4ZysQmFNXW0tULZOeJsF4Iuk8nldVatecDYiLrthbC8jvnAxv3LFJARrpOra//2GsX9gHnbXNjfCowz+WB1K8d9GjNrmA8KH/dpvG7ywRXkZ1IzxH0aEqNfnEA+sPt9oePelw8OV5kPmi7u07jXxHAP2fQ0a9ynsTRHPmjquE9juKvZs/JBS8S9r5F6KCMftEzcp3GPiW3Z49PiXl6rtSS9FfJBS8Z9aD5IWmLJ3583orcXmzEmH+jW1kX8T5hhfgrT0nGfxmx3zN0V8A6gpKSkpKSkhJrzH5y2COItjn1DAAAAAElFTkSuQmCC"/></defs></svg>
+                    <div id="city-div">
+                        <h3>Київ</h3>
+                        <h4>Київ обл., Київ р-н.</h4>
+                    </div>
+                </div>
+                <h2>Змінити</h2>
+            </div>
+            <h1>Замовлення</h1>
+            <div id="items-list">
+                <div class="item">
+                    <div class="item-img-description">
+                        <div class="item-image-div">
+                            <img src="{{ url_for('home_app.static', filename='img/phones/iphone-16.webp') }}" alt="">
+                        </div>
+                        <p>Мобільний телефон Apple iPhone 16 Pro Max 256GB Desert Titanium</p>
+                    </div>
+                    <h5>x 1 од.  70 999 ₴</h5>
+                </div>
+                <div class="item">
+                    <div class="item-img-description">
+                        <div class="item-image-div">
+                            <img src="{{ url_for('home_app.static', filename='img/phones/samsung-s24.jpg') }}" alt="">
+                        </div>
+                        <p>Мобільний телефон Samsung Galaxy S24 Ultra 12GB/1TB Titanium Violet</p>
+                    </div>
+                    <h5>x 1 од.  61 599 ₴</h5>
+                </div>
+                <h2>Редагувати товар</h2>
+            </div>
+            <h1>Доставка</h1>
+            <div id="delivery-div">
+                <div id="delivery-way-div">
+                    <p>Самовивіз з Нової Пошти</p>
+                    <h2>Безкоштовно</h2>
+                </div>
+                <div id="delivery-department-div">
+                    <div id="input-handler">
+                        <div><p>виберіть відділення</p></div>
+                        <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.75L8 7.25L15 0.75" stroke="#7C7C7C" stroke-width="2"/></svg>
+                    </div>
+                    <button>
+                        <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect x="0.5" width="22" height="22" fill="url(#pattern0_105_369)"/><defs><pattern id="pattern0_105_369" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_105_369" transform="scale(0.0104167)"/></pattern><image id="image0_105_369" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEzElEQVR4nO2dv49VVRDHLxEIjQngDwQRQ9BGTaQhNgvb2Blig4l/ga2lLQmFxkoaE01sLK1IKCwspKAiG7Uh1oYGKARWQJcffsgNs8ndufveuT9mzj3v7XzL3fPOfGc+58y97xXnVMB14AvgULVDBBwAPgPWgKvAh1Oa2dQT4BfgE2BvtWQCXqgLDfwEbNDWNCDYXn8D3wEr1YILeBf4Crg5I9dpQXQwtHAtiq0tZqjygOhhqOgWRbrFlAlioKliWhT9W0xZIAyMZW9R2LSYMkAYGnNtUfi1mGlBOJm7DXwDnDTwd1Lmque01p8Gc1wBVksDMKpF4dtibgAXgfeN8x+2I8inR8Al4GNgzzY+9sj/LslYS90BvgfOALsS+T/OuiM6TPgHji0KvxazITDPAft65H8C+MFgEXQDkZpFverdonytAZ8Drw5ZgI2/vymt6l/X1pT69Jw3Ees2MUZ/yQJ5u0vRuwBo/P+YK4jUp+YYPygPyt+YRneAH2VBbOnrlgAa4w4J5IemIFKjOyax2aI8XhWb+g+4bPldo2++dWuTXB9gASI1qmcye4GzDi1qTfr6y6Oqvb3nQfkCr1iAMAWgDB6Wov0+4kvS+fqtZKiHjj5H5VsvCvF5tygAyuQHwLfyI15KF4FTFnE7ejPJV0B8CawXB6Bhch/wqbyfr3vH6+jJND7wEnABuFccAGV0N3B62QCon1POFwugYTRrvNzx9fyteMkBziJzvNzxA0BCAUCpyizv+Hr+VrzkAGcRAAJAU94LTCt2gFIAyKwAoBQAMheEADBfAWCcEuWNhzDOCy4AJBQAlKrM8o6v52/FSw5wFgEgADTlvcC0YgcoBYDMCgBKASBzQQgA8xUAxilR3ngI47zgAkBCAUCpyizv+Hr+VrzkAGcRAAJAU94LTCt2gFIAyKwAoBQAMheEADBfAWCcEuWNhzDOCy4AJBQAlKrM8o6v52/FSw5wFgEgADTlvcC0YgcoBYDMCgBKASBzQQgA8xUAxilR3ngI47zgAkBCAUCpyizv+Hr+VrzkAGcRAAJAU94LTCt2gFIAyKwAoBQAMheEALAzAfD8jOivveMnyruzHsLALuAj4Gfg6YyUTY/JDAAiOeL4WqogAqY+ePatykA7HgCwIkfJ99UjOZv6xKQA5OjF/RaroYvByrbwv2JzD0F96OwbFvm18u1oYl3OST5gVaBZBiubU3rrA76ttSFXd70+Jr9Wvj1NmINAGxo+z3vSu//HV5sgjgzJr5XvQBNmINCG+n/+HenVs95qPI/Sr0Ec7pOfFQAzEGhD3T93XApQ3182pR7IgeOvDQWwIhewTQICbSg9/pgU/rHFBQpG+de6LyC2XNeV+lBz4CQgmGWoPe6oJFhvffO7XAxB/CM1ONgLQMPI6sD3Zn2/S6fXVxKG6q1tVPhO10oZ5Y9c6JA+PX2OkSw7ghmG5Bx+u7taespwR8xVLiMzQdDWi3L14aArQawv2/QG0ceIS2uirbuTXq7pm39LQ4yY7gjslOUKcusdMcaI1Y6gxBWfKf/xv33lelhNteK98y/GyKIV3ir/YowsauHH5l+MkUUv/ND8izGyLIXvm38xRpat8F3zL8YIS1r4VP5TGlmV9+hJ3uOn1mb+zwBqmjcLGwpCQwAAAABJRU5ErkJggg=="/></defs></svg>
+                        Обрати на мапі
+                    </button>
+                </div>
+            </div>
+            <h1>Отримувач: Dima</h1>
+        </div>
+        <div id="order-summary-div">
+            <div id="order-summary">
+                <h1>Разом</h1>
+                <div id="total-price-div">
+                    <p>2 товари на суму</p>
+                    <p>132 598 ₴</p>
+                </div>
+                <div id="delivery-price-div">
+                    <p>Вартість доставки</p>
+                    <p>0 ₴</p>
+                </div>
+                <div id="summary">
+                    <p>До сплати</p>
+                    <h2>132 598 ₴</h2>
+                </div>
+                <div style="width: 0px; height: 10px;"></div>
+                <button>
+                    Підтвердити
+                </button>
+            </div>
+        </div>
+    </main>
+{% endblock %}
