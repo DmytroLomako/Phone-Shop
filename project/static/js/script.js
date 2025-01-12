@@ -46,7 +46,7 @@ const auth = document.querySelector('.auth');
 const reg = document.querySelector('.reg');
 const cart = document.querySelector('.cart-div');
 const account = document.querySelector('.account');
-
+const cancel = document.querySelectorAll('cancel');
 const errorText = document.querySelector('.error-text');
 if (errorText) {
     overlayReg.style.display = 'flex';
@@ -67,14 +67,28 @@ buttonCart.addEventListener('click', () => {
     overlayReg.style.display = 'flex';
     cart.style.display = 'flex';
 });
+
 overlayReg.addEventListener('click', (e) => {
-    if (e.target === overlayReg) {
+    if (e.target === overlayReg || e.target.classList.contains('cancel')){
         overlayReg.style.display = 'none';
         account.style.display = 'none';
         cart.style.display = 'none';
         auth.style.display = 'none';
         reg.style.display = 'none';
     }
+    else {
+        console.log('overlay');
+    }
+});
+
+cancel.forEach(button => {
+    button.addEventListener('click', () => {
+        overlayReg.style.display = 'none';
+        account.style.display = 'none';
+        cart.style.display = 'none';
+        auth.style.display = 'none';
+        reg.style.display = 'none';
+    });
 });
 
 regLink.addEventListener('click', () => {

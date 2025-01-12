@@ -18,7 +18,10 @@ def render_auth():
                 user = User.query.filter_by(username=username).first()
                 if user:
                     if 'product' in referer:
-                        product_id, product_color, product_memory = referer.split('/')[-1].split('&')
+                        if 'error' in referer:
+                            product_id, product_color, product_memory = referer.split('/')[-2].split('&')
+                        else:
+                            product_id, product_color, product_memory = referer.split('/')[-1].split('&')
                         return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-reg')
                     return flask.redirect('/error-reg')
                 else:
@@ -31,7 +34,10 @@ def render_auth():
                     flask_login.login_user(user)
                 else:
                     if 'product' in referer:
-                        product_id, product_color, product_memory = referer.split('/')[-1].split('&')
+                        if 'error' in referer:
+                            product_id, product_color, product_memory = referer.split('/')[-2].split('&')
+                        else:
+                            product_id, product_color, product_memory = referer.split('/')[-1].split('&')
                         return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-auth')
                     return flask.redirect('/error-auth')
             print(username, password)

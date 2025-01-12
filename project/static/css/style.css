@@ -110,6 +110,7 @@ header{
     box-sizing: border-box;
     gap: 40px;
     border-radius: 30px;
+    position: relative;
 }
 .reg{
     width: 340px;
@@ -121,6 +122,7 @@ header{
     box-sizing: border-box;
     gap: 40px;
     border-radius: 30px;
+    position: relative;
 }
 .account{
     width: 340px;
@@ -133,6 +135,7 @@ header{
     box-sizing: border-box;
     gap: 40px;
     border-radius: 30px;
+    position: relative;
 }
 .account button{
     background-color: rgba(0, 0, 0, 0);
@@ -153,6 +156,7 @@ header{
 .reg-form{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
     width: 270px;
 }
@@ -183,16 +187,33 @@ header{
 .cart-header{
     width: 100%;
     min-height: 80px;
-    padding: 0 40px;
+    padding: 0 15px 0 40px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     border-bottom: 1px solid #D4D4D4;
+    position: relative;
 }
 .cart-header h1{
     color: white;
     font-size: 32px;
     font-weight: 500;
+}
+.cancel-cart, .cancel-acc {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+}
+
+.cancel-cart:hover, .cancel-acc:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0px 4px 4px rgba(132, 132, 132, 0.25));
+    cursor: pointer;
+}
+.cancel-acc{
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 .cart-item{
     display: flex;
@@ -246,9 +267,18 @@ header{
 }
 .delete-cart-item{
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
-.delete-cart-item img{
-    width: 25px;
+.delete-cart-item:hover{
+    cursor: pointer;
+}
+.delete-cart-item .basket-cover{
+    transition: all 0.6s;
+    transform-origin: 80% bottom;
+}
+.delete-cart-item:hover .basket-cover{
+    transform: rotate(45deg);
 }
 .cart-add{
     width: fit-content;
@@ -333,12 +363,16 @@ header{
     padding-right: 45px;
 }
 .button-login{
-    width: 100%;
     height: 40px;
     border-radius: 20px;
     background-color: #5A95FF;
     color: white;
     font-size: 16px;
+    padding: 0 30px;
+}
+.button-login:hover{
+    cursor: pointer;
+    background-color: #3869F3;
 }
 .search-form__input:focus{
     outline: none;
