@@ -35,8 +35,6 @@ main{
 .chosen-color-div .chosen-color-text{
     font-weight: bolder;
 }
-
-
 .colors-list{
     display: flex;
     flex-direction: row;

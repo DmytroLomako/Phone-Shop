@@ -34,9 +34,11 @@ main h1{
     font-size: 16px;
     color: #5A95FF;
     font-weight: 400;
+    transition: all 0.5s;
 }
 #location-div h2:hover{
     cursor: pointer;
+    color: #543cf5;
 }
 #logo-city-div{
     display: flex;
@@ -55,7 +57,7 @@ main h1{
     font-weight: 300;
 }
 #items-list{
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -99,6 +101,11 @@ main h1{
     color: #5A95FF;
     font-weight: 400;
     height: 30px;
+    transition: all 0.5s;
+}
+#items-list h2:hover{
+    cursor: pointer;
+    color: #543cf5;
 }
 #delivery-div{
     width: 100%;
@@ -156,6 +163,11 @@ main h1{
     font-size: 14px;
     gap: 10px;
     color: white;
+    transition: all 0.2s;
+}
+#delivery-department-div button:hover{
+    cursor: pointer;
+    background-color: #2b6da8;
 }
 #order-summary-div{
     width: 100%;
@@ -208,4 +220,9 @@ main h1{
     font-weight: 100;
     color: white;
     border-radius: 20px;
+    transition: all 0.2s;
+}
+#order-summary button:hover{
+    cursor: pointer;
+    background-color: #1700A3;
 }

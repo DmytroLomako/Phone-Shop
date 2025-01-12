@@ -102,7 +102,6 @@ header{
 }
 .auth{
     width: 340px;
-    height: 380px;
     background-color: hsla(0, 0%, 0%, 0.698);
     display: none;
     flex-direction: column;
@@ -114,7 +113,6 @@ header{
 }
 .reg{
     width: 340px;
-    height: 380px;
     background-color: hsla(0, 0%, 0%, 0.698);
     display: none;
     flex-direction: column;
@@ -137,7 +135,7 @@ header{
     border-radius: 30px;
 }
 .account button{
-    background-color: hsla(0, 0%, 0%, 0.698);
+    background-color: rgba(0, 0, 0, 0);
 }
 .reg p, .auth p, .account p{
     color: #5A95FF;
@@ -273,6 +271,24 @@ header{
     height: 25px;
     border: 1px solid #D4D4D4;
     border-radius: 20px;
+    transition: all 0.5s;
+}
+.cart-add input:hover{
+    border: 1px solid #5A95FF;
+}
+.cart-add svg:hover{
+    cursor: pointer;
+}
+.cart-add svg path{
+    transition: all 0.5s;
+}
+.cart-add svg:hover path{
+    stroke: #3869F3;
+}
+.auth .error-text, .reg .error-text{
+    color: red;
+    text-align: center;
+    margin: -10px 0;
 }
 .cart-total{
     position: sticky;
@@ -421,7 +437,7 @@ li{
     .content-l{
         width: 42%;;
     }
-    .phone{
+    #catalog-img-handler{
         width: 100%;
         height: 75%;
     }
@@ -485,7 +501,7 @@ li{
     .content-l{
         width: 203px;;
     }
-    .phone{
+    #catalog-img-handler{
         width: 180px;
         height: 240px;
     }
@@ -515,7 +531,7 @@ li{
     .content-l{
         width: 216px;;
     }
-    .phone{
+    #catalog-img-handler{
         width: 220px;
         height: 290px;
     }
@@ -534,7 +550,7 @@ li{
     .content-l{
         width: 250px;;
     }
-    .phone{
+    #catalog-img-handler{
         width: 250px;
         height: 330px;
     }

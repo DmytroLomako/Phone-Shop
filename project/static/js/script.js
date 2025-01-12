@@ -47,6 +47,17 @@ const reg = document.querySelector('.reg');
 const cart = document.querySelector('.cart-div');
 const account = document.querySelector('.account');
 
+const errorText = document.querySelector('.error-text');
+if (errorText) {
+    overlayReg.style.display = 'flex';
+    if (errorText.id === 'reg_error') {
+        reg.style.display = 'flex';
+    }
+    else {
+        auth.style.display = 'flex';
+    }
+}
+
 buttonUser.addEventListener('click', () => {
     overlayReg.style.display = 'flex';
     account.style.display = 'flex';
