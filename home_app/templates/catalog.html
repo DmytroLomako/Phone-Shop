@@ -21,18 +21,18 @@
         <div class="content">
             <ul class="content-list">
                 {% for product in list_products %}
-                    <a href="/product/{{ product.id }}&{{ product.color }}&{{ product.memory }}" class="phone-link">
-                        <li class="content-l">
+                    <li class="content-l">
+                        <a href="/product/{{ product.id }}&{{ product.color }}&{{ product.memory }}" class="phone-link">
                             <div id="catalog-img-handler"><img src="{{ url_for('home_app.static', filename='img/phones/' + product.image) }}" class="phone"></div>
                             <h2>{{ product.description }}</h2>
-                            <div class="price">
-                                <h1>{{ product.price }}</h1>
-                                <button class="blue-cart-b">
-                                    <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
-                                </button>
-                            </div>
-                        </li>
-                    </a>
+                        </a>
+                        <div class="price">
+                            <h1>{{ product.price }}</h1>
+                            <button class="blue-cart-b" id="product-{{ product.id }}">
+                                <img src="{{ url_for('home_app.static', filename='img/blue-cart.png') }}" class="blue-cart">
+                            </button>
+                        </div>
+                    </li>
                 {% endfor %}
             </ul>
         </div>

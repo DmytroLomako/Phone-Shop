@@ -2,9 +2,11 @@ main{
     display: flex;
     margin-top: 100px;
     flex-direction: row;
+    justify-content: center;
 }
 #image-div{
-    width: 100%;
+    width: 680px;
+    height: 680px;
     display: flex;
     justify-content: center;
 }
@@ -120,6 +122,7 @@ main{
     font-weight: 100;
     padding: 10px;
     align-items: center;
+    justify-content: center;
 }
 .buy-product h1{
     font-size: 32px;

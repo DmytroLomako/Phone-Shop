@@ -1,6 +1,10 @@
 *{
     box-sizing: border-box;
 }
+body{
+    display: flex;
+    justify-content: center;
+}
 #menu{
     box-sizing: unset;
 }
@@ -83,6 +87,9 @@ main h1{
 .item-image-div{
     width: 65px;
     height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .item-image-div img{
     max-width: 100%;
@@ -101,6 +108,7 @@ main h1{
     color: #5A95FF;
     font-weight: 400;
     height: 30px;
+    width: fit-content;
     transition: all 0.5s;
 }
 #items-list h2:hover{
@@ -170,7 +178,7 @@ main h1{
     background-color: #2b6da8;
 }
 #order-summary-div{
-    width: 100%;
+    width: 400px;
     display: flex;
     justify-content: center;
     padding-top: 50px;

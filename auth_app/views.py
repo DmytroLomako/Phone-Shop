@@ -6,7 +6,6 @@ import flask_login
 from home_app import render_home, render_product
 
 def render_auth():
-    print('sjnvkhnvkvhnkjhvnkgjvhbgjk')
     if flask.request.method == 'POST':
         if flask.request.form.get('class') == 'logout-form':
             flask_login.logout_user()

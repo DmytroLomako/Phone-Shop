@@ -38,7 +38,7 @@ passwordsInput.forEach(function(passwordInput){
 })
 
 const buttonUser = document.getElementById('button-user');
-const buttonCart = document.getElementById('button-cart');
+const buttonCart = document.querySelectorAll('.cart');
 const overlayReg = document.querySelector('.overlay-reg');
 const regLink = document.querySelector('.reg-link-reg');
 const authLink = document.querySelector('.reg-link-auth');
@@ -63,9 +63,11 @@ buttonUser.addEventListener('click', () => {
     account.style.display = 'flex';
     auth.style.display = 'flex';
 });
-buttonCart.addEventListener('click', () => {
-    overlayReg.style.display = 'flex';
-    cart.style.display = 'flex';
+buttonCart.forEach(button => {
+    button.addEventListener('click', () => {
+        overlayReg.style.display = 'flex';
+        cart.style.display = 'flex';
+    });
 });
 
 overlayReg.addEventListener('click', (e) => {
@@ -99,3 +101,18 @@ authLink.addEventListener('click', () => {
     reg.style.display = 'none';
     auth.style.display = 'flex';
 });
+
+const buttonList = document.querySelectorAll('.blue-cart-b')
+
+for (let i = 0; i < buttonList.length; i++) {
+    buttonList[i].addEventListener('click', (event) => {
+        let productId = buttonList[i].id.split('-')[1];
+        if (document.cookie.includes('product')){
+            let currentProducts = document.cookie.split('=')[1]
+            document.cookie = `product = ${currentProducts},${productId}; path=/`
+        }
+        else {
+            document.cookie = `product = ${productId}; path=/`
+        }
+    })
+}
