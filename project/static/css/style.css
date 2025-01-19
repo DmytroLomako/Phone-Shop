@@ -325,16 +325,28 @@ header{
     text-align: center;
     margin: -10px 0;
 }
+#empty-cart-id{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.empty-cart-text{
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 40px;
+    font-weight: 100;
+}
 .cart-total{
     position: sticky;
     right: 10px;
     bottom: 10px;
     border-radius: 20px;
-    width: 420px;
+    width: fit-content;
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
     padding: 10px 20px;
     background-color: #080a87;
     box-sizing: border-box;

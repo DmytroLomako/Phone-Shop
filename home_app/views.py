@@ -3,17 +3,27 @@ from project.settings import database
 from .models import Product, Order
 from flask_login import current_user
 
-def render_home(error = None):
+def get_cart() -> list:
     list_product_cart_id = []
     products_cart = flask.request.cookies.get('product')
     if products_cart != None:
         list_product_cart_id = products_cart.split(',')
     list_product_cart = []
+    summary_price = 0
     for id in list_product_cart_id:
         product_cart = Product.query.get(id)
         if product_cart != None:
+            product_price_list = product_cart.price.split(' ')
+            summary_price += int(product_price_list[0] + product_price_list[1])
             list_product_cart.append(product_cart)
+    print(summary_price)
+    summary_price = f'{summary_price:,}'.replace(',', ' ')
+    print(summary_price)
     list_product_cart = list(set(list_product_cart))
+    return list_product_cart, summary_price
+
+def render_home(error = None):
+    list_product_cart, summary_price = get_cart()
     print(list_product_cart)
     list_products = Product.query.all()
     user_auth = False
@@ -26,19 +36,10 @@ def render_home(error = None):
             error_reg = 'Користувач вже існує'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart)
+    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart, summary_price = summary_price)
 
 def render_product(product_id, product_color, product_memory, error = None):
-    list_product_cart_id = []
-    products_cart = flask.request.cookies.get('product')
-    if products_cart != None:
-        list_product_cart_id = products_cart.split(',')
-    list_product_cart = []
-    for id in list_product_cart_id:
-        product_cart = Product.query.get(id)
-        if product_cart != None:
-            list_product_cart.append(product_cart)
-    list_product_cart = list(set(list_product_cart))
+    list_product_cart, summary_price = get_cart()
     list_colors = ['black', 'violet', 'midnightblue', 'darkblue', 'gold', 'green', 'red']
     list_memory = ['64GB', '128GB', '256GB', '512GB', '1TB']
     product = Product.query.get(product_id)
@@ -70,4 +71,4 @@ def render_product(product_id, product_color, product_memory, error = None):
             error_reg = 'Користувач вже існує'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart)
+    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart, summary_price = summary_price)
