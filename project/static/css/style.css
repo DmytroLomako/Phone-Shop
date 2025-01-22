@@ -102,19 +102,7 @@ header{
     backdrop-filter: blur(10px);
     z-index: 3;
 }
-.auth{
-    width: 340px;
-    background-color: hsla(0, 0%, 0%, 0.698);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 0;
-    box-sizing: border-box;
-    gap: 40px;
-    border-radius: 30px;
-    position: relative;
-}
-.reg{
+.auth, .reg, .change-password-div{
     width: 340px;
     background-color: hsla(0, 0%, 0%, 0.698);
     display: none;
@@ -142,27 +130,27 @@ header{
 .account button{
     background-color: rgba(0, 0, 0, 0);
 }
-.reg p, .auth p, .account p{
+.reg p, .auth p, .account p, .change-password-form p{
     color: #5A95FF;
     text-decoration: none;
 }
 .account p{
     font-size: 16px;
 }
-.reg h1, .auth h1, .account h1{
+.reg h1, .auth h1, .account h1, .change-password-div h1{
     color: white;
 }
-.reg p:hover, .auth p:hover, .account p:hover{
+.reg p:hover, .auth p:hover, .account p:hover, .change-password-div p:hover{
     cursor: pointer;
 }
-.reg-form{
+.reg-form, .change-password-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     width: 270px;
 }
-.reg-form input{
+.reg-form input, .change-password-form input{
     width: 100%;
     height: 40px;
     box-sizing: border-box;
@@ -320,7 +308,7 @@ header{
 .cart-add svg:hover path{
     stroke: #3869F3;
 }
-.auth .error-text, .reg .error-text{
+.auth .error-text, .reg .error-text, .change-password-div .error-text{
     color: red;
     text-align: center;
     margin: -10px 0;

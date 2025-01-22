@@ -9,6 +9,27 @@ def render_auth():
     if flask.request.method == 'POST':
         if flask.request.form.get('class') == 'logout-form':
             flask_login.logout_user()
+        elif flask.request.form.get('class') == 'delete-form':
+            user = User.query.get(current_user.id)
+            flask_login.logout_user()
+            database.session.delete(user)
+            database.session.commit()
+        elif flask.request.form.get('class') == 'change-password-form':
+            referer = flask.request.headers.get('Referer')
+            old_password = flask.request.form['old_password']
+            new_password = flask.request.form['new_password']
+            user = User.query.get(current_user.id)
+            if user.password == old_password:
+                user.password = new_password
+                database.session.commit()
+            else:
+                if 'product' in referer:
+                    if 'error' in referer:
+                        product_id, product_color, product_memory = referer.split('/')[-2].split('&')
+                    else:
+                        product_id, product_color, product_memory = referer.split('/')[-1].split('&')
+                    return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-password')
+                return flask.redirect('/error-password')
         else:
             username = flask.request.form['login']
             password = flask.request.form['password']

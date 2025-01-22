@@ -4,6 +4,7 @@ from .models import Product, Order
 from flask_login import current_user
 
 def get_cart() -> list:
+    final_product_list = []
     list_product_cart_id = []
     products_cart = flask.request.cookies.get('product')
     if products_cart != None:
@@ -19,8 +20,9 @@ def get_cart() -> list:
     print(summary_price)
     summary_price = f'{summary_price:,}'.replace(',', ' ')
     print(summary_price)
-    list_product_cart = list(set(list_product_cart))
-    return list_product_cart, summary_price
+    for product in list(set(list_product_cart)):
+        final_product_list.append([product, list_product_cart.count(product)])
+    return final_product_list, summary_price
 
 def render_home(error = None):
     list_product_cart, summary_price = get_cart()
@@ -29,14 +31,17 @@ def render_home(error = None):
     user_auth = False
     error_reg = None
     error_auth = None
+    error_password = None
     if current_user.is_authenticated:
         user_auth = current_user.username
     if error != None:
         if 'reg' in error:
             error_reg = 'Користувач вже існує'
+        elif 'password' in error:
+            error_password = 'Старий пароль не співпадає'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart, summary_price = summary_price)
+    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price)
 
 def render_product(product_id, product_color, product_memory, error = None):
     list_product_cart, summary_price = get_cart()
@@ -66,9 +71,12 @@ def render_product(product_id, product_color, product_memory, error = None):
     print(error)
     error_reg = None
     error_auth = None
+    error_password = None
     if error != None:
         if 'reg' in error:
             error_reg = 'Користувач вже існує'
+        elif 'password' in error:
+            error_password = 'Старий пароль не співпадає'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, list_product_cart = list_product_cart, summary_price = summary_price)
+    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price)
