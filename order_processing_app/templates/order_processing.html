@@ -52,14 +52,18 @@
                     </button>
                 </div>
             </div>
-            <h1>Отримувач: Dima</h1>
+            <h1>Отримувач: {{ username }}</h1>
         </div>
         <div id="order-summary-div">
             <div id="order-summary">
                 <h1>Разом</h1>
                 <div id="total-price-div">
                     <p>2 товари на суму</p>
-                    <p>132 598 ₴</p>
+                    {% if '₴' in summary_price %}
+                        <p>{{ summary_price }}</p>
+                    {% else %}
+                        <p>{{ summary_price }} ₴</p>
+                    {% endif %}
                 </div>
                 <div id="delivery-price-div">
                     <p>Вартість доставки</p>
@@ -67,7 +71,11 @@
                 </div>
                 <div id="summary">
                     <p>До сплати</p>
-                    <h2>132 598 ₴</h2>
+                    {% if '₴' in summary_price %}
+                        <h2>{{ summary_price }}</h2>
+                    {% else %}
+                        <h2>{{ summary_price }}  ₴</h2>
+                    {% endif %}
                 </div>
                 <div style="width: 0px; height: 10px;"></div>
                 <button>

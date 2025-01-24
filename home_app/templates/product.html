@@ -4,6 +4,7 @@
 {% block title %}Lumin{% endblock %}
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/product.css') }}">
+    <script src="{{ url_for('home_app.static', filename='js/product.js') }}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -41,11 +42,8 @@
                 <p>Є в наявності</p>
                 <div class="buy-product">
                     <h1>{{ product.price }}</h1>
-                    <form action="" method="post">
-                        <input type="hidden" name="class" value="buy-form">
-                        <button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button>
-                    </form>
-                    <button class="buy-on-credit-button">Купити в кредит</button>
+                    <a href="/order_processing/{{ product.id }}" style="text-decoration: none;"><button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button></a>
+                    <button class="add-to-cart-button" id="product-{{ product.id }}">Додати до кошика</button>
                     <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>         
                 </div>
             </div>

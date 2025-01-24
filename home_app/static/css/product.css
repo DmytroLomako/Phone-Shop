@@ -150,12 +150,12 @@ main{
 .buy-product img{
     width: 30px;
 }
-.buy-on-credit-button{
+.add-to-cart-button{
     border: 1px solid #1D00D6;
     color: #1D00D6;
     background-color: white;
 }
-.buy-on-credit-button:hover{
+.add-to-cart-button:hover{
     cursor: pointer;
     background-color: #0003b80b;
 }

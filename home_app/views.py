@@ -54,11 +54,12 @@ def render_product(product_id, product_color, product_memory, error = None):
     list_memory[memory_index] += ' active'
     if flask.request.method == 'POST' and flask.request.form.get('class') != 'auth-form':
         if flask.request.form.get('class') == 'buy-form':
-            if current_user.is_authenticated:
-                order = Order(user_id = current_user.id, product_id = product_id, product_color = product_color, product_memory = product_memory)
-                database.session.add(order)
-                database.session.commit()
-                return flask.redirect('/')
+            # if current_user.is_authenticated:
+            #     order = Order(user_id = current_user.id, product_id = product_id, product_color = product_color, product_memory = product_memory)
+            #     database.session.add(order)
+            #     database.session.commit()
+            #     return flask.redirect('/')
+            pass
         else:
             if flask.request.form.get('memory_button'):
                 product_memory = flask.request.form.get('memory_button')
