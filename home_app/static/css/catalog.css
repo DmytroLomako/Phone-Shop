@@ -8,6 +8,7 @@ main{
     flex-direction: row;
     justify-content: center;
     max-width: 1670px;
+    width: 100%;
 }
 .filters-div{
     display: inline-block;
@@ -20,21 +21,33 @@ main{
 .phone-link:hover{
     cursor: pointer;
 }
-.filters-list{
+.brand-filters-list{
     width: 150px;
     flex-direction: column;
     gap: 20px;
 }
 .filters-l{
     gap: 10px;
+    background-color: transparent; 
+    height: 25px;
+    justify-content: flex-start;
+    padding-left: 5px;
+    margin-right: 5px;
+    align-items: center;
+    display: flex;
 }
 .filters-l:hover{
     cursor: pointer;
+    background-color: #5a94ff14;
 }
-.filters-l svg, .filters-l a{
+p{
+    color: #5A95FF;
+    font-size: 16px;
+}
+.filters-l svg, .filters-l p{
     transition: all 0.5s;
 }
-.filters-l:hover svg, .filters-l:hover a{
+.filters-l:hover svg, .filters-l:hover p{
     filter: brightness(0.8);
 }
 a{
@@ -157,7 +170,7 @@ h2{
         margin-left: 8px;
         margin-right: 8px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: none;
     }
 }
@@ -172,7 +185,7 @@ h2{
         margin-left: 16px;
         margin-right: 16px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: none;
     }
     .content-l{
@@ -198,7 +211,7 @@ h2{
         margin-left: 24px;
         margin-right: 24px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: flex;
     }
     .filters-div{

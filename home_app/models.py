@@ -4,6 +4,7 @@ class Product(database.Model):
     __tablename__ = 'product'
     id = database.Column(database.Integer, primary_key=True)
     name = database.Column(database.String)
+    brand = database.Column(database.String)
     price = database.Column(database.String)
     color = database.Column(database.String)
     memory = database.Column(database.String)

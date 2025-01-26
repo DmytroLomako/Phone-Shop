@@ -523,7 +523,7 @@ li{
         margin-left: 8px;
         margin-right: 8px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: none;
     }
 }
@@ -538,7 +538,7 @@ li{
         margin-left: 16px;
         margin-right: 16px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: none;
     }
     .content-l{
@@ -564,7 +564,7 @@ li{
         margin-left: 24px;
         margin-right: 24px;
     }
-    .filters-list{
+    .brand-filters-list{
         display: flex;
     }
     .filters-div{

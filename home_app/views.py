@@ -25,12 +25,28 @@ def get_cart() -> list:
     return final_product_list, summary_price
 
 def render_home(error = None):
+    search = ''
+    if flask.request.args:
+        search = flask.request.args.get('search')
     list_product_cart, summary_price = get_cart()
     print(list_product_cart)
-    list_products = Product.query.all()
+    list_all_products = Product.query.all()
+    list_products = []
+    for product in list_all_products:
+        if search:
+            if search.lower() in product.description.lower():
+                list_products.append(product)
+        else:
+            list_products = list_all_products
+            break
+    list_brands = []
+    for product in list_products:
+        if product.brand not in list_brands:
+            list_brands.append(product.brand)
     user_auth = False
     error_reg = None
     error_auth = None
+    print('search')
     error_password = None
     if current_user.is_authenticated:
         user_auth = current_user.username
@@ -41,7 +57,7 @@ def render_home(error = None):
             error_password = 'Старий пароль не співпадає'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price)
+    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, search = search, list_brands = list_brands)
 
 def render_product(product_id, product_color, product_memory, error = None):
     list_product_cart, summary_price = get_cart()

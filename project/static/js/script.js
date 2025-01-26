@@ -155,7 +155,6 @@ for (let i = 0; i < buttonList.length; i++) {
                 changeTotalPrice(productItem.querySelector('h1'))
                 cartItem.classList.add(`cartProduct-${productId}`)
                 cartItem.innerHTML = `
-                    <input class="button-add" type="checkbox" name="" id="" checked>
                     <div class="image-handler">
                         <img src="${productItem.querySelector('img').src}" alt="">
                     </div>
@@ -188,7 +187,6 @@ for (let i = 0; i < buttonList.length; i++) {
                     <svg class="cancel-cart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect class="cancel" width="30" height="30" fill="url(#pattern0_137_270_4)"/><defs><pattern id="pattern0_137_270_4" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_137_270" transform="scale(0.0104167)"/></pattern><image id="image0_137_270" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACqUlEQVR4nO2dQXITMRBFtYeww5wjhGPkBgkLWMHxHA4AVdZciKzDo6aYKaYMrtiZkbpb+u8ATvf741hSlHZKQgghhBBCCCGEEEKI2AA74Ba4SUEBbqYedikSwB3wyF++AVcpCMBr4GFR/9jLfYoA8Al44l8G4E1yDvAK+P6f+n8BX5NngM8n5IcIgdPy/YdwhnzXIfC8fL8hXCDfZQicL99fCC+Q7yoELpe/DOFLVPnLEK4CyrcPAfi4Uv5MtghhWmoeWM/o4K528e+O1vmhQmA7+TM/q27Wpt3h1uQaIRSQP3NbuvbjLTrRQqCc/JH3peo+1cw+UgiUlf+wdb01VhDVVkeRam2uMQLU2GyDOK5tUzw2isOaiuKpYRzVUhUPjeOgBlMsBdC7fEsRSL6dECTf7p2A5JseARwKvrbJMXkRCj+lfX/gNhjC0Jz8QCEMzcoPEMLQvHzHIQzdyHcYQu5OvqMQcrfyHYSQu5dvGILkG4aQ9eTbhZAl3zaAQQHYyZ9RCIbyZxSCofwZhYD9RqzfEBzI7zcER/L7C8Gh/H5CcCy//RACyG83hEDy2wthursznsFEu5ZyGK/UpMgUfvKzLmYZy091fla8X0c15c8ohDoisq6nO5Wfen8nTI3/8PCXLHoLwZP87kLwKL+bEDzLbz6ECPKbDmGaBRrmCICy/6mz37re55r5EPH8hVbG1RQa2HSocfjVysCm3TSmK+TJI9FHli3mQz9FPfZl26F9997mRIe4q8k2YyttB7iuCCGbb2TWD251Mz330hBcyF85uth2au6KEFzJf+Hwbl/yLwjBpfwLx9f7lH/GPGnX8s/8Agff8mfGZdnRaON9pBsG/FmiLueiPlafD73hl/hcp6AA11MPb61rEUIIIYQQQgghhBBCpHX8BouW3a92uMn6AAAAAElFTkSuQmCC"/></defs></svg>
                 </div>
                 <div class="cart-item">
-                    <input class="button-add" type="checkbox" name="" id="" checked>
                     <div class="image-handler">
                         <img src="${productItem.querySelector('img').src}" alt="">
                     </div>
