@@ -22,7 +22,7 @@ main{
     cursor: pointer;
 }
 .brand-filters-list{
-    width: 150px;
+    width: 200px;
     flex-direction: column;
     gap: 20px;
 }
@@ -39,6 +39,19 @@ main{
 .filters-l:hover{
     cursor: pointer;
     background-color: #5a94ff14;
+}
+.price-filter{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+    align-items: center;
+}
+.price-filter input{
+    width: 37%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }
 p{
     color: #5A95FF;

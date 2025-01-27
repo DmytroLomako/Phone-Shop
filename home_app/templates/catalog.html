@@ -4,15 +4,24 @@
 {% block title %}Lumin{% endblock %}
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/catalog.css') }}">
+    <script src="{{ url_for('home_app.static', filename='js/catalog.js') }}" defer></script>
 {% endblock %}
 
 {% block content %}
     <main>
         <div class="filters-div">
             <form class="brand-filters-list">
+                <h2>Ціна:</h2>
+                <div class="price-filter">
+                    <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price">
+                    <p>-</p>
+                    <input type="number" value="{{ max_price }}" class="max-price-filter" name="max-price">
+                    <p>₴</p>
+                </div>
+                <h2>Бренди:</h2>
                 {% for brand in list_brands %}
                 <button class="filters-l">
-                    <input type="checkbox">
+                    <input class="filter-checkbox" type="checkbox" value="{{ brand }}" name="brand" {% if brand in list_search_brand %} checked {% endif %}>
                     <img src="{{ url_for('home_app.static', filename='img/brands/' + brand + '.png') }}" alt="">
                     <p href="">{{ brand }}</p>
                 </button>
