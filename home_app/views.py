@@ -1,6 +1,6 @@
 import flask
 from project.settings import database
-from .models import Product, Order
+from .models import Product
 from flask_login import current_user
 
 def get_cart() -> list:
