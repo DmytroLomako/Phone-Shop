@@ -4,6 +4,8 @@
 {% block title %}Lumin{% endblock %}
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/catalog.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
     <script src="{{ url_for('home_app.static', filename='js/catalog.js') }}" defer></script>
 {% endblock %}
 
@@ -15,9 +17,10 @@
                 <div class="price-filter">
                     <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price">
                     <p>-</p>
-                    <input type="number" value="{{ max_price }}" class="max-price-filter" name="max-price">
-                    <p>₴</p>
+                    <input type="number" value="{% if max_price_filter %}{{ max_price_filter }}{% else %}{{ max_price }}{% endif %}" class="max-price-filter" name="max-price" id="{{ max_price }}">
+                    <button class="price-filter-button">ОК</button>
                 </div>
+                <div id="price-range" data-min-price="{{ low_price }}" data-max-price="{{ max_price }}"></div>
                 <h2>Бренди:</h2>
                 {% for brand in list_brands %}
                 <button class="filters-l">
