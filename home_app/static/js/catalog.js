@@ -1,8 +1,30 @@
 let filterCheckbox = document.querySelectorAll('.filter-checkbox');
 let filterForm = document.querySelector('.brand-filters-list');
-let filterButton = document.querySelectorAll('.filters-l')
-let filterMaxPrice = document.querySelector('.max-price-filter')
-let filterMinPrice = document.querySelector('.min-price-filter')
+let filterButton = document.querySelectorAll('.filters-l');
+let filterMaxPrice = document.querySelector('.max-price-filter');
+let filterMinPrice = document.querySelector('.min-price-filter');
+let priceFilterButton = document.querySelector('.price-filter-button');
+
+
+filterMaxPrice.addEventListener('input', (event) => {
+    if (filterMaxPrice.value > Number(filterMaxPrice.id) || filterMaxPrice.value < Number(filterMinPrice.id)){
+        priceFilterButton.disabled = true;
+        filterMaxPrice.style.color = '#be0202';
+    } else {
+        priceFilterButton.disabled = false;
+        filterMaxPrice.style.color = 'black';
+    }
+})
+
+filterMinPrice.addEventListener('input', (event) => {
+    if (filterMinPrice.value > Number(filterMaxPrice.id) || filterMinPrice.value < Number(filterMinPrice.id)){
+        priceFilterButton.disabled = true;
+        filterMinPrice.style.color = '#be0202';
+    } else {
+        priceFilterButton.disabled = false;
+        filterMinPrice.style.color = 'black';
+    }
+})
 
 filterButton.forEach(function (button) {
     button.addEventListener('click', function (event){

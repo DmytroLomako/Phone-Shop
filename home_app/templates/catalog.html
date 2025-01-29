@@ -15,13 +15,13 @@
             <form class="brand-filters-list">
                 <h2>Ціна:</h2>
                 <div class="price-filter">
-                    <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price">
+                    <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price" id="{{ low_price }}">
                     <p>-</p>
-                    <input type="number" value="{% if max_price_filter %}{{ max_price_filter }}{% else %}{{ max_price }}{% endif %}" class="max-price-filter" name="max-price" id="{{ max_price }}">
+                    <input type="number" value="{{ max_price }}" class="max-price-filter" name="max-price" id="{{ max_price }}">
                     <button class="price-filter-button">ОК</button>
                 </div>
                 <div id="price-range" data-min-price="{{ low_price }}" data-max-price="{{ max_price }}"></div>
-                <h2>Бренди:</h2>
+                <h2 style="border-top: 1px solid #D3D3D3;">Бренди:</h2>
                 {% for brand in list_brands %}
                 <button class="filters-l">
                     <input class="filter-checkbox" type="checkbox" value="{{ brand }}" name="brand" {% if brand in list_search_brand %} checked {% endif %}>

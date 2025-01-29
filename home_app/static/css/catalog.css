@@ -26,15 +26,22 @@ main{
     flex-direction: column;
     gap: 20px;
 }
+.brand-filters-list h2{
+    font-size: 18px;
+    margin: 0;
+    padding-top: 10px;
+}
 .filters-l{
     gap: 10px;
     background-color: transparent; 
-    height: 25px;
+    height: 30px;
     justify-content: flex-start;
-    padding-left: 5px;
+    padding-left: 10px;
     margin-right: 5px;
     align-items: center;
     display: flex;
+    transition: all 0.3s;
+    border-radius: 5px;
 }
 .filters-l:hover{
     cursor: pointer;
