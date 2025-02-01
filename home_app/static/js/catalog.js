@@ -4,7 +4,8 @@ let filterButton = document.querySelectorAll('.filters-l');
 let filterMaxPrice = document.querySelector('.max-price-filter');
 let filterMinPrice = document.querySelector('.min-price-filter');
 let priceFilterButton = document.querySelector('.price-filter-button');
-
+let maxPriceAll = Number(document.querySelector('.max-all').value)
+let minPriceAll = Number(document.querySelector('.min-all').value)
 
 filterMaxPrice.addEventListener('input', (event) => {
     if (filterMaxPrice.value > Number(filterMaxPrice.id) || filterMaxPrice.value < Number(filterMinPrice.id)){
@@ -51,8 +52,8 @@ noUiSlider.create(priceSlider, {
     start: [minPrice, maxPrice], 
     connect: true,
     range: {
-        'min': minPrice,
-        'max': maxPrice
+        'min': minPriceAll,
+        'max': maxPriceAll
     },
     format: {
         to: function (value) {

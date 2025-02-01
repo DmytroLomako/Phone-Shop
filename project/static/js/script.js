@@ -1,5 +1,40 @@
 const searchInput = document.querySelector('.search-form__input');
 const overlay = document.querySelector('.overlay');
+let searchForm = document.querySelector('.search-form');
+
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let url = window.location;
+    let formText = searchInput.value
+    console.log(url)
+    let urlParams;
+    if (url.search.includes('search')){
+        if (url.search.includes('&')){
+            let listParams = url.search.split('&')
+            
+            for (let i = 0; i < listParams.length; i++){
+                let element = listParams[i]
+                if (element.includes('search')){
+                    let key = element.split('=')[0]
+                    listParams[i] = `${key}=${formText}`
+                }
+            }
+            console.log(listParams);
+            
+            urlParams = listParams.join('&')
+        }
+        else{
+            urlParams = `?search=${formText}`
+        }
+    } else{
+        if (url.search.includes('&')){
+            urlParams = url.search + `&search=${formText}`
+        } else{
+            urlParams = url.search + `?search=${formText}`
+        }
+    }
+    window.location.href = `${url.origin}/${urlParams}`
+})
 
 searchInput.addEventListener('focus', () => {
     overlay.style.display = 'block';

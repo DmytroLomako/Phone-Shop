@@ -11,19 +11,19 @@ class Product(database.Model):
     description = database.Column(database.String)
     image = database.Column(database.String)
     order = database.relationship('Order', backref = 'product')
+    product_diversity = database.relationship('ProductDiversity', backref = 'product')
     def __repr__(self):
         return self.name
     
 class ProductDiversity(database.Model):
     __tablename__ = 'product_diversity'
     id = database.Column(database.Integer, primary_key=True)
-    name = database.Column(database.String)
-    brand = database.Column(database.String)
     price = database.Column(database.String)
     color = database.Column(database.String)
     memory = database.Column(database.String)
     description = database.Column(database.String)
     image = database.Column(database.String)
+    product_id = database.Column(database.Integer, database.ForeignKey('product.id', name = 'product_id'))
     # order = database.relationship('Order', backref = 'product')
     def __repr__(self):
         return self.name
