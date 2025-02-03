@@ -15,9 +15,9 @@
             <form class="brand-filters-list">
                 <h2>Ціна:</h2>
                 <div class="price-filter">
-                    <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price">
+                    <input type="number" value="{{ low_price }}" class="min-price-filter" name="min-price" id="{{ low_price }}">
                     <p>-</p>
-                    <input type="number" value="{{ max_price }}" class="max-price-filter" name="max-price">
+                    <input type="number" value="{{ max_price }}" class="max-price-filter" name="max-price" id="{{ max_price }}">
                     <input type="hidden" name="" value="{{ max_price_all }}" class="max-all">
                     <input type="hidden" name="" value="{{ min_price_all }}" class="min-all">
                     <button class="price-filter-button">ОК</button>
