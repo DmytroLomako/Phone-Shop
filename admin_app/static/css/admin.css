@@ -37,6 +37,11 @@ main{
     text-align: center;
     margin-top: 15px;
 }
+#products-ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 .product-info{
     display: flex;
     gap: 10px;
@@ -47,6 +52,8 @@ main{
 .product-info h1{
     width: 11%;
     text-align: center;
+    font-weight: 100;
+    font-size: 28px;
 }
 .image-size-handler{
     width: 11%;

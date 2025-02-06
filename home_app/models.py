@@ -24,9 +24,6 @@ class ProductDiversity(database.Model):
     description = database.Column(database.String)
     image = database.Column(database.String)
     product_id = database.Column(database.Integer, database.ForeignKey('product.id', name = 'product_id'))
-    # order = database.relationship('Order', backref = 'product')
-    def __repr__(self):
-        return self.name
     
 class Order(database.Model):
     __tablename__ = 'order'
