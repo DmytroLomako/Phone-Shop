@@ -33,12 +33,11 @@ def get_product(list_all_products: list[Product]) -> list[Product]:
     if flask.request.args:
         if 'search' in flask.request.args:
             search = flask.request.args.get('search')
-        else:
-            if 'brand' in flask.request.args:
-                brand = flask.request.args.getlist('brand')
-            if 'min-price' in flask.request.args:
-                min_price_filter = flask.request.args.get('min-price')
-                max_price_filter = flask.request.args.get('max-price')
+        if 'brand' in flask.request.args:
+            brand = flask.request.args.getlist('brand')
+        if 'min-price' in flask.request.args:
+            min_price_filter = flask.request.args.get('min-price')
+            max_price_filter = flask.request.args.get('max-price')
     print(brand)
     max_price_all = 0
     min_price_all = 100000

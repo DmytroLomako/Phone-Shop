@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Lumin{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('admin_app.static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="body-header">
+            <h1>Products</h1>
+            <h2 class="add-new-product-text">Add new <img src="{{ url_for('admin_app.static', filename='img/add.png') }}" alt=""></h2>
+        </div>
+        <div class="categories">
+            <p>name</p>
+            <p>image</p>
+            <p>images</p>
+            <p>brand</p>
+            <p>price</p>
+            <p>colors</p>
+            <p>memories</p>
+            <p>description</p>
+            <p>actions</p>
+        </div>
+        <ul>
+            <li class="product-info">
+                <h1>Iphone 16</h1>
+                <div class="image-size-handler"><img src="{{ url_for('home_app.static', filename='img/phones/iphone-16/gold.webp') }}" alt=""></div>
+                <div class="category-div">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/iphone-16/gold.webp') }}" alt="">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/iphone-16/black.webp') }}" alt="">
+                    <img src="{{ url_for('home_app.static', filename='img/phones/iphone-16/white.webp') }}" alt="">
+                </div>
+                <h1>Apple</h1>
+                <h1>70 999 ₴</h1>
+                <div class="category-div">
+                    <button class="color-frame" name="color_button" value="gold"><div class="color" style="background-color: gold"></button>
+                    <button class="color-frame" name="color_button" value="black"><div class="color" style="background-color: black"></button>
+                    <button class="color-frame" name="color_button" value="white"><div class="color" style="background-color: white"></button>
+                </div>
+                <div class="category-div" style="gap: 5px;">
+                    <button class="memory-button" name="memory_button" value="128GB">128GB</button>
+                    <button class="memory-button" name="memory_button" value="256GB">256GB</button>
+                    <button class="memory-button" name="memory_button" value="512GB">512GB</button>
+                    <button class="memory-button" name="memory_button" value="1TB">1TB</button>
+                </div>
+                <h2>
+                    Мобільний телефон Apple iPhone 16 Pro Max 256GB Desert Titanium
+                </h2>
+                <div class="actions">
+                    <button class="button-edit"><img src="{{ url_for('admin_app.static', filename='img/edit.png') }}" alt=""></button>
+                    <button class="button-delete"><img src="{{ url_for('admin_app.static', filename='img/delete.png') }}" alt=""></button>
+                    <p></p>
+                </div>
+            </li>
+        </ul>
+    </main>
+{% endblock %}
