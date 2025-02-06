@@ -73,6 +73,7 @@ passwordsInput.forEach(function(passwordInput){
 })
 
 const buttonUser = document.getElementById('button-user');
+const buttonGear = document.getElementById('button-gear')
 const buttonCart = document.querySelectorAll('.cart');
 const overlayReg = document.querySelector('.overlay-reg');
 const regLink = document.querySelector('.reg-link-reg');
@@ -102,6 +103,9 @@ buttonUser.addEventListener('click', () => {
     account.style.display = 'flex';
     auth.style.display = 'flex';
     changePassword.style.display = 'none';
+});
+buttonGear.addEventListener('click', () => {
+    window.location.href += 'admin'
 });
 buttonCart.forEach(button => {
     button.addEventListener('click', (event) => {
