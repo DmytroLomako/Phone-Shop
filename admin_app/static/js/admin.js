@@ -17,8 +17,10 @@ cancelAddNewProduct.addEventListener('click', () => {
 dropdownMenuButton.addEventListener('click', () => {
     if (dropdownMenu.style.display === 'flex'){
         dropdownMenu.style.display = 'none';
+        dropdownMenuButton.style.transform = 'rotate(0)';
     } else{
         dropdownMenu.style.display = 'flex';
+        dropdownMenuButton.style.transform = 'rotate(180deg)';
     }
 })
 

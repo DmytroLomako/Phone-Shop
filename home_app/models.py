@@ -23,7 +23,7 @@ class ProductDiversity(database.Model):
     memory = database.Column(database.String)
     description = database.Column(database.String)
     image = database.Column(database.String)
-    product_id = database.Column(database.Integer, database.ForeignKey('product.id', name = 'product_id'))
+    product_id = database.Column(database.Integer, database.ForeignKey('product.id', ondelete='CASCADE', name = 'product_id'))
     
 class Order(database.Model):
     __tablename__ = 'order'

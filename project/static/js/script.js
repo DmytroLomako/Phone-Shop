@@ -104,9 +104,11 @@ buttonUser.addEventListener('click', () => {
     auth.style.display = 'flex';
     changePassword.style.display = 'none';
 });
-buttonGear.addEventListener('click', () => {
-    window.location.href += 'admin'
-});
+if (buttonGear){
+    buttonGear.addEventListener('click', () => {
+        window.location.href = window.location.origin + '/admin'
+    });
+}
 buttonCart.forEach(button => {
     button.addEventListener('click', (event) => {
         overlayReg.style.display = 'flex';
