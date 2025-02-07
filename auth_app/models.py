@@ -6,6 +6,7 @@ class User(database.Model, UserMixin):
     id = database.Column(database.Integer, primary_key=True)
     username = database.Column(database.String)
     password = database.Column(database.String)
+    is_admin = database.Column(database.Boolean, default = False)
     order = database.relationship('Order', backref = 'user')
     def __repr__(self):
         return self.username

@@ -16,4 +16,4 @@ def render_order_processing(id = False):
         username = current_user.username
     if flask.request.method == 'POST':
         return flask.redirect('/order_processing')
-    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username)
+    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user)

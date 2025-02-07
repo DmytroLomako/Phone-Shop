@@ -100,7 +100,7 @@ def render_home(error = None):
             error_password = 'Старий пароль не співпадає'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, search = search, list_brands = list_brands, list_search_brand = list_search_brand, max_price = max_price, low_price = low_price, min_price_all = min_price_all, max_price_all = max_price_all)
+    return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, search = search, list_brands = list_brands, list_search_brand = list_search_brand, max_price = max_price, low_price = low_price, min_price_all = min_price_all, max_price_all = max_price_all, account=current_user.is_authenticated, user=current_user)
 
 def render_product(product_id, product_color, product_memory, error = None):
     list_product_cart, summary_price = get_cart()
@@ -139,4 +139,4 @@ def render_product(product_id, product_color, product_memory, error = None):
             error_password = 'Старий пароль не співпадає'
         else:
             error_auth = 'Невірний логін або пароль'
-    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price)
+    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, account=current_user.is_authenticated, user=current_user)
