@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выпадающий список</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+        .dropdown-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu div {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dropdown-menu div:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <div class="dropdown-input" onclick="toggleDropdown()">Выберите вариант</div>
+        <div class="dropdown-menu">
+            <div onclick="selectOption(this)">Вариант 1</div>
+            <div onclick="selectOption(this)">Вариант 2</div>
+            <div onclick="selectOption(this)">Вариант 3</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const menu = document.querySelector('.dropdown-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function selectOption(element) {
+            document.querySelector('.dropdown-input').innerText = element.innerText;
+            document.querySelector('.dropdown-menu').style.display = 'none';
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(event.target)) {
+                document.querySelector('.dropdown-menu').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

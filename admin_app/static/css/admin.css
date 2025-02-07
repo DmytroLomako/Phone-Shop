@@ -153,3 +153,145 @@ main{
 .add-new-product-text:hover::after {
     width: 100%;
 }
+.new-product-overlay{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    background-color: rgba(2, 0, 29, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+.new-product-div{
+    display: flex;
+    width: 460px;
+    height: fit-content;
+    max-height: 700px;
+    padding: 0 10px 15px 10px;
+    gap: 25px;
+    border-radius: 30px;
+    background-color: #434242;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto;
+}
+.new-product-header{
+    width: 100%;
+    min-height: 80px;
+    padding: 0 10px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D4D4D4;
+    position: relative;
+}
+.new-product-header h1{
+    color: white;
+    font-size: 32px;
+    font-weight: 500;
+}
+.cancel-new-product{
+    transition: all 0.3s ease;
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+}
+.cancel-new-product:hover{
+    transform: scale(1.2);
+    filter: drop-shadow(0px 4px 4px rgba(132, 132, 132, 0.25));
+    cursor: pointer;
+}
+.new-product-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+}
+.new-product-input{
+    position: relative;
+    width: 100%;
+}
+.new-product-input .input{
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dddddd;
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    word-wrap: break-word; /* This forces the text to wrap */
+    /* Alternatively, you can use this: */
+    overflow-wrap: break-word;
+}
+.new-product-input label{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #434242;
+    padding: 0 5px;
+    color: #c4c3c3;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+.new-product-input .input:focus + label, 
+.new-product-input .input:not(:placeholder-shown) + label {
+    top: 0;
+    left: 20px;
+    font-size: 14px;
+    color: white;
+}
+.new-product-input-memory:hover{
+    cursor: pointer;
+}
+.new-product-input-memory .input{
+    padding-right: 40px;
+}
+.dropdown-menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    align-items: flex-end;
+    width: 100%;
+}
+.dropdown-menu button{
+    width: 80px;
+    padding: 10px 5px;
+    background-color: #434242;
+    border: 1px solid #D4D4D4;
+    border-radius: 5px;
+    color: white;
+    margin-right: 0px;
+    z-index: 1;
+}
+.dropdown-menu button:hover{
+    cursor: pointer;
+    background-color: #5e5e5e;
+}
+#dropdown-menu-button{
+    padding: 10px;
+    position: absolute;
+    right: 7;
+    top: 5;
+    background-color: transparent;
+}
+#dropdown-menu-button:hover{
+    cursor: pointer;
+}
+#add-button{
+    padding: 15px 20px;
+    margin-top: -10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+#add-button:hover{
+    cursor: pointer;
+    background-color: rgb(32, 32, 32);
+}
