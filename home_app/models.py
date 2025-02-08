@@ -11,7 +11,7 @@ class Product(database.Model):
     description = database.Column(database.String)
     image = database.Column(database.String)
     order = database.relationship('Order', backref = 'product')
-    product_diversity = database.relationship('ProductDiversity', backref = 'product')
+    product_diversity = database.relationship('ProductDiversity', cascade="all,delete", backref = 'product')
     def __repr__(self):
         return self.name
     

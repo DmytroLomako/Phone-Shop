@@ -48,7 +48,7 @@
                     <div class="category-div" style="gap: 5px;">
                         {% for memory in list_memories %}
                             {% if product.id == memory[0] %}
-                                <button class="memory-button" name="memory_button" value="{{ memory[1] }}">{{ memory[1] }}</button>
+                                <button type="button" class="memory-button" name="memory_button" value="{{ memory[1] }}">{{ memory[1] }}</button>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -97,20 +97,20 @@
                     <div class="new-product-input new-product-input-memory">
                         <input class="input" autocomplete="off" type="text" placeholder="" name="memory" required>
                         <label>Memory</label>
-                        <button id="dropdown-menu-button"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
+                        <button type="button" id="dropdown-menu-button"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
                         <div class="dropdown-menu">
-                            <button>64GB</button>
-                            <button>128GB</button>
-                            <button>256GB</button>
-                            <button>512GB</button>
-                            <button>1024GB</button>
+                            <button type="button">64GB</button>
+                            <button type="button">128GB</button>
+                            <button type="button">256GB</button>
+                            <button type="button">512GB</button>
+                            <button type="button">1024GB</button>
                         </div>
                     </div>
                     <div class="new-product-input">
                         <textarea class="input" style="height: 70px" type="text" placeholder="" name="description" required></textarea>
                         <label>Description</label>
                     </div>
-                    <div id="add-button-handler"><button id="add-button">Додати</button></div>
+                    <div id="add-button-handler"><button type="submit" id="add-button">Додати</button></div>
                 </form>
             </div>
         </div>
