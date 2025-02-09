@@ -1,6 +1,6 @@
 import flask, os
 from home_app.models import Product, ProductDiversity
-from home_app.views import get_cart
+from home_app.views import get_cart, get_user_info
 from project.settings import database
 from flask_login import current_user
 
@@ -38,6 +38,9 @@ def render_admin():
                 product_diversity = ProductDiversity(price=price, color=color, memory=memory, description=description, image=image_path, product=product)
                 database.session.add(product_diversity)
                 database.session.commit()
+            # elif 'edit_product_form' in flask.request.form:
+            #     product_id = flask.request.form.get('product_id')
+            #     product = Product.query.get(product_id)
             else:
                 product_id = flask.request.form.get('product_id')
                 product = Product.query.get(product_id)

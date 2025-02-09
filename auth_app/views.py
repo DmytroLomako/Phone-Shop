@@ -29,6 +29,15 @@ def render_auth():
                     else:
                         product_id, product_color, product_memory = referer.split('/')[-1].split('&')
                     return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-password')
+                elif 'order_processing' in referer:
+                    try:
+                        if 'error' in referer:
+                            int(referer.split('/')[-2])
+                        else:
+                            int(referer.split('/')[-1])
+                        return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-password')
+                    except:
+                        return flask.redirect('/order_processing/error-password')
                 return flask.redirect('/error-password')
         else:
             username = flask.request.form['login']
@@ -43,6 +52,15 @@ def render_auth():
                         else:
                             product_id, product_color, product_memory = referer.split('/')[-1].split('&')
                         return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-reg')
+                    elif 'order_processing' in referer:
+                        try:
+                            if 'error' in referer:
+                                int(referer.split('/')[-2])
+                            else:
+                                int(referer.split('/')[-1])
+                            return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-reg')
+                        except:
+                            return flask.redirect('/order_processing/error-reg')
                     return flask.redirect('/error-reg')
                 else:
                     user = User(username=username, password=password)
@@ -59,6 +77,17 @@ def render_auth():
                         else:
                             product_id, product_color, product_memory = referer.split('/')[-1].split('&')
                         return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}/error-auth')
+                    elif 'order_processing' in referer:
+                        try:
+                            if 'error' in referer:
+                                int(referer.split('/')[-2])
+                                return flask.redirect(f'/order_processing/{referer.split('/')[-2]}/error-auth')
+                            else:
+                                int(referer.split('/')[-1])
+                                return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-auth')
+                        except:
+                            return flask.redirect('/order_processing/error-auth')
                     return flask.redirect('/error-auth')
             print(username, password)
-    return flask.redirect('/')
+        return flask.redirect(flask.request.referrer)
+    flask.abort(404)

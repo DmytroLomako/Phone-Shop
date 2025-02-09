@@ -1,6 +1,6 @@
 import flask
 from home_app.models import Product
-from home_app.views import get_cart
+from home_app.views import get_cart, get_user_info
 from flask_login import current_user
 import requests, json
 
@@ -24,7 +24,7 @@ def get_cities():
             list_cities.append(i['Description'])
     return list_cities
 
-def render_order_processing(id = False):
+def render_order_processing(id = False, error = None):
     list_cities = get_cities()
     if id:
         product = Product.query.get(id)
@@ -38,4 +38,5 @@ def render_order_processing(id = False):
         username = current_user.username
     if flask.request.method == 'POST':
         return flask.redirect('/order_processing')
-    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities)
+    user_auth, error_reg, error_auth, error_password = get_user_info(error)
+    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password)
