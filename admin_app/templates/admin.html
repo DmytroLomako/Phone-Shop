@@ -56,7 +56,7 @@
                         {{ product.description }}
                     </h2>
                     <div class="actions">
-                        <button class="button-edit"><img src="{{ url_for('admin_app.static', filename='img/edit.png') }}" alt=""></button>
+                        <button class="button-edit" id="{{ product.id }}" value="{{ product.name }}"><img src="{{ url_for('admin_app.static', filename='img/edit.png') }}" alt=""></button>
                         <form action="" method="post">
                             <input type="hidden" name="product_id" value="{{ product.id }}">
                             <button class="button-delete"><img src="{{ url_for('admin_app.static', filename='img/delete.png') }}" alt=""></button>
@@ -66,11 +66,11 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="new-product-overlay">
+        {% if edit_product %}<div class="product-overlay" style="display: flex;">{% else %}<div class="product-overlay">{% endif %}
             <div class="new-product-div">
                 <div class="new-product-header">
                     <h1>Новий продукт</h1>
-                    <svg class="cancel-new-product" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect class="cancel" width="30" height="30" fill="url(#pattern0_137_270_4)"/><defs><pattern id="pattern0_137_270_4" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_137_270" transform="scale(0.0104167)"/></pattern><image id="image0_137_270" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACqUlEQVR4nO2dQXITMRBFtYeww5wjhGPkBgkLWMHxHA4AVdZciKzDo6aYKaYMrtiZkbpb+u8ATvf741hSlHZKQgghhBBCCCGEEEKI2AA74Ba4SUEBbqYedikSwB3wyF++AVcpCMBr4GFR/9jLfYoA8Al44l8G4E1yDvAK+P6f+n8BX5NngM8n5IcIgdPy/YdwhnzXIfC8fL8hXCDfZQicL99fCC+Q7yoELpe/DOFLVPnLEK4CyrcPAfi4Uv5MtghhWmoeWM/o4K528e+O1vmhQmA7+TM/q27Wpt3h1uQaIRSQP3NbuvbjLTrRQqCc/JH3peo+1cw+UgiUlf+wdb01VhDVVkeRam2uMQLU2GyDOK5tUzw2isOaiuKpYRzVUhUPjeOgBlMsBdC7fEsRSL6dECTf7p2A5JseARwKvrbJMXkRCj+lfX/gNhjC0Jz8QCEMzcoPEMLQvHzHIQzdyHcYQu5OvqMQcrfyHYSQu5dvGILkG4aQ9eTbhZAl3zaAQQHYyZ9RCIbyZxSCofwZhYD9RqzfEBzI7zcER/L7C8Gh/H5CcCy//RACyG83hEDy2wthursznsFEu5ZyGK/UpMgUfvKzLmYZy091fla8X0c15c8ohDoisq6nO5Wfen8nTI3/8PCXLHoLwZP87kLwKL+bEDzLbz6ECPKbDmGaBRrmCICy/6mz37re55r5EPH8hVbG1RQa2HSocfjVysCm3TSmK+TJI9FHli3mQz9FPfZl26F9997mRIe4q8k2YyttB7iuCCGbb2TWD251Mz330hBcyF85uth2au6KEFzJf+Hwbl/yLwjBpfwLx9f7lH/GPGnX8s/8Agff8mfGZdnRaON9pBsG/FmiLueiPlafD73hl/hcp6AA11MPb61rEUIIIYQQQgghhBBCpHX8BouW3a92uMn6AAAAAElFTkSuQmCC"/></defs></svg>
+                    <img class="cancel-new-product" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
                 </div>
                 <form class="new-product-info-container" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="add_product_form">
@@ -97,7 +97,7 @@
                     <div class="new-product-input new-product-input-memory">
                         <input class="input" autocomplete="off" type="text" placeholder="" name="memory" required>
                         <label>Memory</label>
-                        <button type="button" id="dropdown-menu-button"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
+                        <button type="button" class="dropdown-menu-button"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
                         <div class="dropdown-menu">
                             <button type="button">64GB</button>
                             <button type="button">128GB</button>
@@ -110,9 +110,66 @@
                         <textarea class="input" style="height: 70px" type="text" placeholder="" name="description" required></textarea>
                         <label>Description</label>
                     </div>
-                    <div id="add-button-handler"><button type="submit" id="add-button">Додати</button></div>
+                    <div id="add-button-handler"><button type="submit" class="add-button">Додати</button></div>
                 </form>
             </div>
+            <div class="choose-edit">
+                <h1></h1>
+                <button class="edit-main-product-text"><p>Edit Main Product</p></button>
+                <form action="" method="post" class="edit-main-product-form" style="display: none;"><input type="hidden" name="edit_product_id" value=""></form>
+                <button class="edit-diversity-product-text"><p>Edit Product Diversities</p></button>
+                <button class="add-diversity-product-text"><p>Add Product Diversity</p></button>
+                <img class="cancel-choose-edit" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
+            </div>
+            {% if edit_product %}
+                <div class="edit-main-product" style="display: flex;">
+                    <div class="new-product-header">
+                        <h1>Main Product</h1>
+                        <img class="cancel-edit-main" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
+                    </div>
+                    <form class="new-product-info-container" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="edit_main_product_form" value="{{ edit_product.id }}">
+                        <div class="new-product-input">
+                            <input class="input" autocomplete="off" type="text" placeholder="" name="name" value="{{ edit_product.name }}" required>
+                            <label>Name</label>
+                        </div>
+                        <div class="new-product-input" style="display: flex;">
+                            <input class="input" type="file" accept="image/webp" name="image">
+                            <label>Image</label>
+                            <img src="{{ url_for('home_app.static', filename='img/phones/' + edit_product.image) }}" style="max-width: 50px; max-height: 50px;" alt="">
+                        </div>
+                        <div class="new-product-input">
+                            <input class="input" autocomplete="off" type="text" placeholder="" name="brand" value="{{ edit_product.brand }}" required>
+                            <label>Brand</label>
+                        </div>
+                        <div class="new-product-input">
+                            <input class="input" autocomplete="off" type="text" placeholder="" name="price" value="{{ edit_product.price }}" required>
+                            <label>Price</label>
+                        </div>
+                        <div class="new-product-input">
+                            <input class="input" autocomplete="off" type="text" placeholder="" name="color" value="{{ edit_product.color }}" required>
+                            <label>Color</label>
+                        </div>
+                        <div class="new-product-input new-product-input-memory edit-product-input-memory">
+                            <input class="input" autocomplete="off" type="text" placeholder="" name="memory" value="{{ edit_product.memory }}" required>
+                            <label>Memory</label>
+                            <button type="button" class="dropdown-menu-button dropdown-menu-button2"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
+                            <div class="dropdown-menu dropdown-menu2">
+                                <button type="button">64GB</button>
+                                <button type="button">128GB</button>
+                                <button type="button">256GB</button>
+                                <button type="button">512GB</button>
+                                <button type="button">1024GB</button>
+                            </div>
+                        </div>
+                        <div class="new-product-input">
+                            <textarea class="input" style="height: 70px" type="text" placeholder="" name="description" required>{{ edit_product.description }}</textarea>
+                            <label>Description</label>
+                        </div>
+                        <div id="add-button-handler"><button type="submit" class="add-button">Додати</button></div>
+                    </form>
+                </div>
+            {% endif %}
         </div>
     </div>
     </main>

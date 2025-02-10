@@ -134,6 +134,27 @@ header{
     color: #5A95FF;
     text-decoration: none;
 }
+.p{
+    position: relative;
+}
+.p::after, .p::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    background-color: #5A95FF;
+    transition: width 0.6s;
+}
+.p::after{
+    left: 50%;
+}
+.p::before{
+    right: 50%;
+}
+.p:hover::after, .p:hover::before{
+    width: 50%;
+}
 .account p{
     font-size: 16px;
 }
