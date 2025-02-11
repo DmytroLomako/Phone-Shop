@@ -4,11 +4,12 @@ from home_app.views import get_cart, get_user_info
 from flask_login import current_user
 import requests, json
 
+api = "Your Nova Poshta Api"
+url = 'https://api.novaposhta.ua/v2.0/json/'
 
 def get_cities():
-    url = 'https://api.novaposhta.ua/v2.0/json/'
     data = {
-        "apiKey": "Your Nova Poshta Api",
+        "apiKey": api,
         "modelName": "Address",
         "calledMethod": "getCities",
         "methodProperties": {},
@@ -26,6 +27,8 @@ def get_cities():
 
 def render_order_processing(id = False, error = None):
     list_cities = get_cities()
+    list_warehouses = []
+    city = ''
     if id:
         product = Product.query.get(id)
         list_product_cart = [[product, 1]]
@@ -37,6 +40,23 @@ def render_order_processing(id = False, error = None):
     if current_user.is_authenticated:
         username = current_user.username
     if flask.request.method == 'POST':
-        return flask.redirect('/order_processing')
+        city = flask.request.form.get('city-div')
+        data = {
+            "apiKey": api,
+            "modelName": "Address",
+            "calledMethod": "getWarehouses",
+            "methodProperties": {
+                "CityName": city
+            },
+        }
+        
+        data = json.dumps(data)
+        info = requests.post(url=url, data=data)
+        response = json.loads(info.text)
+        for i in response['data']:
+            list_warehouses.append(i['Description'])
     user_auth, error_reg, error_auth, error_password = get_user_info(error)
-    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password)
+    return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_warehouses=list_warehouses, city=city)
+
+def render_order():
+    return 'Hello'

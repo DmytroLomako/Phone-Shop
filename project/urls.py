@@ -10,6 +10,7 @@ order_processing_app.order_processing_app.add_url_rule('/order_processing', view
 order_processing_app.order_processing_app.add_url_rule('/order_processing/<string:error>', view_func = order_processing_app.render_order_processing, methods = ['GET', 'POST'])
 order_processing_app.order_processing_app.add_url_rule('/order_processing/<int:id>', view_func = order_processing_app.render_order_processing, methods = ['GET', 'POST'])
 order_processing_app.order_processing_app.add_url_rule('/order_processing/<int:id>/<string:error>', view_func = order_processing_app.render_order_processing, methods = ['GET', 'POST'])
+order_processing_app.order_processing_app.add_url_rule('/order', view_func=order_processing_app.render_order, methods = ['GET', 'POST'])
 admin_app.admin_app.add_url_rule('/admin', view_func = admin_app.render_admin, methods = ['GET', 'POST'])
 
 project.register_blueprint(home_app.home_app)

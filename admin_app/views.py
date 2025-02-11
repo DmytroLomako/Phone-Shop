@@ -90,8 +90,11 @@ def render_admin():
                 image_path = f'{image_folder}/{product.color}.webp'
                 image_full_path = os.path.abspath(__file__ + f'/../../home_app/static/img/phones/{image_path}')
                 image_folder_path = os.path.abspath(__file__ + f'/../../home_app/static/img/phones/{image_folder}')
-                os.remove(image_full_path)
-                os.remove(image_folder_path)
+                try:
+                    os.remove(image_full_path)
+                    os.remove(image_folder_path)
+                except:
+                    pass
                 database.session.delete(product)
                 database.session.commit()
         return flask.render_template('admin.html', all_products=all_products, list_colors=list_colors, list_memories=list_memories, list_images=list_images, account=current_user.is_authenticated, user=current_user, list_product_cart=list_product_cart, summary_price=summary_price, edit_product=edit_product)
