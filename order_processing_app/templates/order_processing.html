@@ -84,7 +84,9 @@
                     {% endif %}
                 </div>
                 <div style="width: 0px; height: 10px;"></div>
-                <button class="button-submit-order">
+                {% if username == 'Anonymous' %}<button class="button-submit-order" disabled>{% else %}<button class="button-submit-order">{% endif %}
+                    <input type="hidden" name="city" class="city-submit">
+                    <input type="hidden" name="warehouse" class="warehouse-submit">
                     Підтвердити
                 </button>
             </form>
