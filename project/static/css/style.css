@@ -64,6 +64,25 @@ header{
     margin: 0px;
     margin-right: 8px;
 }
+.badge{
+    position: absolute;
+    min-width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    right: 0;
+    top: 0;
+    transform: translate(20%, -10%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: #3869F3;
+    color: #fff;
+}
 .search-form__input-wrapper {
     display: flex;
     flex-direction: row;
@@ -438,12 +457,10 @@ ul{
     padding: 0px;
     gap: 8px;
 }
-.header-list{
-    margin-left: 15px;
-}
 li{
     display: flex;
     align-items: center;
+    position: relative;
 }
 .lang-button{
     display: flex;

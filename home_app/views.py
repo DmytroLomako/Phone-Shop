@@ -24,8 +24,10 @@ def get_cart() -> list:
 
 def get_product(list_all_products: list[Product]) -> list[Product]:
     list_products = list_all_products.copy()
+    list_products_price_filter = list_all_products.copy()
     search = ''
     brand = ''
+    price_filter = False
     min_price_filter = 0
     max_price_filter = 0
     if flask.request.args:
@@ -57,17 +59,20 @@ def get_product(list_all_products: list[Product]) -> list[Product]:
                 if product in list_products:
                     list_products.remove(product)
         if min_price_filter and max_price_filter:
+            price_filter = True
             price = int(product.price.replace(' ', '').split('₴')[0])
             if price < int(min_price_filter) or price > int(max_price_filter):
                 if product in list_products:
                     list_products.remove(product)
+                if product in list_products_price_filter:
+                    list_products_price_filter.remove(product)
         if not brand and not search and not min_price_filter:
             break
     if not min_price_filter:
         min_price_filter = min_price_all
     if not max_price_filter:
         max_price_filter = max_price_all
-    return list_products, search, brand, max_price_filter, min_price_filter, max_price_all, min_price_all
+    return list_products, search, brand, max_price_filter, min_price_filter, max_price_all, min_price_all, list_products_price_filter, price_filter
 
 def get_user_info(error):
     user_auth = False
@@ -89,18 +94,24 @@ def render_home(error = None):
     list_product_cart, summary_price = get_cart()
     print(list_product_cart)
     list_all_products = Product.query.all()
-    list_products, search, brand, max_price, low_price, max_price_all, min_price_all = get_product(list_all_products)
+    list_products, search, brand, max_price, low_price, max_price_all, min_price_all, list_products_price_filter, price_filter = get_product(list_all_products)
     list_brands = []
     list_search_brand = []
+    print(brand, 'sgkhdskjghjksghjgsjhgjsg')
     if not brand:
+        print(1)
         for product in list_products:
             if product.brand not in list_brands:
                 list_brands.append(product.brand)
     else: 
+        print(2)
         list_search_brand = brand
+        if price_filter:
+            list_all_products = list_products_price_filter
         for product in list_all_products:
             if product.brand not in list_brands:
                 list_brands.append(product.brand)
+    list_brands.sort(key = lambda brand: brand[0])
     user_auth, error_reg, error_auth, error_password = get_user_info(error)
     return flask.render_template('catalog.html', list_products = list_products, user_auth = user_auth, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, search = search, list_brands = list_brands, list_search_brand = list_search_brand, max_price = max_price, low_price = low_price, min_price_all = min_price_all, max_price_all = max_price_all, account=current_user.is_authenticated, user=current_user)
 

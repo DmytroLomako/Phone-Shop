@@ -1,39 +1,44 @@
 const searchInput = document.querySelector('.search-form__input');
 const overlay = document.querySelector('.overlay');
 let searchForm = document.querySelector('.search-form');
+let badge = document.querySelector('.badge');
+
+badge.textContent = document.cookie.split('=')[1].split(',').length
+if (badge.textContent == '0'){
+    badge.style.display = 'none';
+}
 
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     let url = window.location;
-    let formText = searchInput.value
-    console.log(url)
-    let urlParams;
-    if (url.search.includes('search')){
-        if (url.search.includes('&')){
-            let listParams = url.search.split('&')
-            
-            for (let i = 0; i < listParams.length; i++){
-                let element = listParams[i]
-                if (element.includes('search')){
-                    let key = element.split('=')[0]
-                    listParams[i] = `${key}=${formText}`
+    let formText = searchInput.value;
+    if (formText){
+        let urlParams;
+        if (url.search.includes('search')){
+            if (url.search.includes('&')){
+                let listParams = url.search.split('&');
+                
+                for (let i = 0; i < listParams.length; i++){
+                    let element = listParams[i];
+                    if (element.includes('search')){
+                        let key = element.split('=')[0];
+                        listParams[i] = `${key}=${formText}`;
+                    }
                 }
+                urlParams = listParams.join('&');
             }
-            console.log(listParams);
-            
-            urlParams = listParams.join('&')
-        }
-        else{
-            urlParams = `?search=${formText}`
-        }
-    } else{
-        if (url.search.includes('&')){
-            urlParams = url.search + `&search=${formText}`
+            else{
+                urlParams = `?search=${formText}`;
+            }
         } else{
-            urlParams = url.search + `?search=${formText}`
+            if (url.search.includes('&')){
+                urlParams = url.search + `&search=${formText}`;
+            } else{
+                urlParams = url.search + `?search=${formText}`;
+            }
         }
+        window.location.href = `${url.origin}/${urlParams}`;
     }
-    window.location.href = `${url.origin}/${urlParams}`
 })
 
 searchInput.addEventListener('focus', () => {
@@ -106,7 +111,7 @@ buttonUser.addEventListener('click', () => {
 });
 if (buttonGear){
     buttonGear.addEventListener('click', () => {
-        window.location.href = window.location.origin + '/admin'
+        window.location.href = window.location.origin + '/admin';
     });
 }
 buttonCart.forEach(button => {
@@ -148,8 +153,8 @@ authLink.addEventListener('click', () => {
     auth.style.display = 'flex';
 });
 
-let changePasswordButton = document.querySelector('.change-password-button')
-let cancelLink = document.querySelector('.cancel-link')
+let changePasswordButton = document.querySelector('.change-password-button');
+let cancelLink = document.querySelector('.cancel-link');
 
 changePasswordButton.addEventListener('click', () => {
     changePassword.style.display = 'flex';
@@ -167,17 +172,17 @@ function changeTotalPrice(priceElem, change = 1){
     let cartTotal = document.querySelector('.cart-total');
     let currentPrice = parseInt(cartTotal.querySelector('h1').textContent.split(' ₴')[0].replaceAll(' ', ''));
     let productPrice = parseInt(priceElem.textContent.split(' ₴')[0].replaceAll(' ', ''))
-    currentPrice += productPrice * change
-    let finalPrice = ''
+    currentPrice += productPrice * change;
+    let finalPrice = '';
     for (let i = 0; i < String(currentPrice).length; i++){
         if (i % 3 == 0){
-            finalPrice += ' '
+            finalPrice += ' ';
         }
-        let index = String(currentPrice).length - 1 - i
-        finalPrice += String(currentPrice)[index]
+        let index = String(currentPrice).length - 1 - i;
+        finalPrice += String(currentPrice)[index];
     }
-    finalPrice = finalPrice.split('').reverse().join('')
-    cartTotal.querySelector('h1').textContent = `${finalPrice} ₴`
+    finalPrice = finalPrice.split('').reverse().join('');
+    cartTotal.querySelector('h1').textContent = `${finalPrice} ₴`;
 }
 
 for (let i = 0; i < buttonList.length; i++) {
@@ -185,17 +190,17 @@ for (let i = 0; i < buttonList.length; i++) {
         let cartItem;
         try {
             let productId = buttonList[i].id.split('-')[1];
-            let oldProduct = document.querySelector(`.cartProduct-${productId}`)
-            let productItem = buttonList[i].closest('li')
+            let oldProduct = document.querySelector(`.cartProduct-${productId}`);
+            let productItem = buttonList[i].closest('li');
             if (oldProduct){
-                let productCount = oldProduct.querySelector('.product-count')
+                let productCount = oldProduct.querySelector('.product-count');
                 productCount.value = Number(productCount.value) + 1;
-                changeTotalPrice(productItem.querySelector('h1'))
+                changeTotalPrice(productItem.querySelector('h1'));
             } else{
                 let productsInCart = document.querySelector('.cart-div');
                 cartItem = document.createElement('div');
-                changeTotalPrice(productItem.querySelector('h1'))
-                cartItem.classList.add(`cartProduct-${productId}`)
+                changeTotalPrice(productItem.querySelector('h1'));
+                cartItem.classList.add(`cartProduct-${productId}`);
                 cartItem.innerHTML = `
                     <div class="image-handler">
                         <img src="${productItem.querySelector('img').src}" alt="">
@@ -255,18 +260,18 @@ for (let i = 0; i < buttonList.length; i++) {
                     </form>
                 </div>
             `
-            cartItem = cartDiv.querySelector('.cart-item')
+            cartItem = cartDiv.querySelector('.cart-item');
         } finally {
-            console.log(10)
-            let plus = cartItem.querySelector('.plus-button')
-            plus.addEventListener('click', () => {plusProduct(plus)})
-            let minus = cartItem.querySelector('.minus-button')
-            minus.addEventListener('click', () => {minusProduct(minus)})
-            let deleteButton = cartItem.querySelector('.delete-cart-item')
-            deleteButton.addEventListener('click', () => {deleteProduct(deleteButton)})
+            let plus = cartItem.querySelector('.plus-button');
+            plus.addEventListener('click', () => {plusProduct(plus)});
+            let minus = cartItem.querySelector('.minus-button');
+            minus.addEventListener('click', () => {minusProduct(minus)});
+            let deleteButton = cartItem.querySelector('.delete-cart-item');
+            deleteButton.addEventListener('click', () => {deleteProduct(deleteButton)});
             let productId = buttonList[i].id.split('-')[1];
+            badge.textContent = Number(badge.textContent) + 1;
             if (document.cookie.includes('product')){
-                let currentProducts = document.cookie.split('=')[1]
+                let currentProducts = document.cookie.split('=')[1];
                 if (currentProducts && currentProducts.trim()) {
                     document.cookie = `product = ${currentProducts},${productId}; path=/`;
                 } else {
@@ -274,64 +279,63 @@ for (let i = 0; i < buttonList.length; i++) {
                 }
             }
             else {
-                document.cookie = `product = ${productId}; path=/`
+                document.cookie = `product = ${productId}; path=/`;
             }
         }
     })
 }
 
-let plusButtonList = document.querySelectorAll('.plus-button')
+let plusButtonList = document.querySelectorAll('.plus-button');
 plusButtonList.forEach(plusButton => {
-    plusButton.addEventListener('click', () => {plusProduct(plusButton)})
+    plusButton.addEventListener('click', () => {plusProduct(plusButton)});
 })
 function plusProduct(plusButton){
-    let priceItem = plusButton.closest('.cart-add-price').querySelector('h2')
-    let productCount = plusButton.previousElementSibling
+    let priceItem = plusButton.closest('.cart-add-price').querySelector('h2');
+    let productCount = plusButton.previousElementSibling;
     productCount.value = Number(productCount.value) + 1;
-    changeTotalPrice(priceItem)
+    changeTotalPrice(priceItem);
     let productClass = Array.from(plusButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
-    let productId = productClass.split('-')[1]
-    let currentProducts = document.cookie.split('=')[1]
-    console.log(productId);
-    console.log(currentProducts);
+    let productId = productClass.split('-')[1];
+    let currentProducts = document.cookie.split('=')[1];
+    badge.textContent = Number(badge.textContent) + 1;
     document.cookie = `product = ${currentProducts},${productId}; path=/`;
-    console.log(document.cookie);
 }
 
-let minusButtonList = document.querySelectorAll('.minus-button')
+let minusButtonList = document.querySelectorAll('.minus-button');
 minusButtonList.forEach(minusButton => {
-    minusButton.addEventListener('click', () => {minusProduct(minusButton)})
+    minusButton.addEventListener('click', () => {minusProduct(minusButton)});
 })
 function minusProduct(minusButton){
-    let priceItem = minusButton.closest('.cart-add-price').querySelector('h2')
-    let productCount = minusButton.nextElementSibling
+    let priceItem = minusButton.closest('.cart-add-price').querySelector('h2');
+    let productCount = minusButton.nextElementSibling;
     if (productCount.value > 1){
         productCount.value = Number(productCount.value) - 1;
-        changeTotalPrice(priceItem, change = -1)
-        console.log(minusButton.closest('.cart-item').classList)
+        changeTotalPrice(priceItem, change = -1);
         let productClass = Array.from(minButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
-        let productId = productClass.split('-')[1]
-        let currentProducts = document.cookie.split('=')[1].split(',')
-        let indexElem = currentProducts.indexOf(productId)
-        currentProducts.splice(indexElem, 1)
-        document.cookie = `product = ${currentProducts.join(',')}; path=/`
+        let productId = productClass.split('-')[1];
+        let currentProducts = document.cookie.split('=')[1].split(',');
+        let indexElem = currentProducts.indexOf(productId);
+        currentProducts.splice(indexElem, 1);
+        badge.textContent = Number(badge.textContent) - 1;
+        document.cookie = `product = ${currentProducts.join(',')}; path=/`;
     }
 }
 
 let buttonDeleteProduct = document.querySelectorAll('.delete-cart-item');
 buttonDeleteProduct.forEach(button => {
-    button.addEventListener('click', () => {deleteProduct(button)})
+    button.addEventListener('click', () => {deleteProduct(button)});
 })
 function deleteProduct(button){
     let cartItem = button.closest('.cart-item');
     let countProduct = cartItem.querySelector('.product-count').value;
-    changeTotalPrice(cartItem.querySelector('h2'), change = -countProduct)
+    changeTotalPrice(cartItem.querySelector('h2'), change = -countProduct);
     cartItem.remove();
 
     let productId = button.id.split('-')[1];
-    let currentProducts = document.cookie.split('=')[1].split(',')
+    let currentProducts = document.cookie.split('=')[1].split(',');
+    badge.textContent = Number(badge.textContent) - Number(countProduct);
     currentProducts = currentProducts.filter(product => product !== productId);
-    document.cookie = `product = ${currentProducts.join(',')}; path=/`
+    document.cookie = `product = ${currentProducts.join(',')}; path=/`;
     if (currentProducts.length == 0){
         let cartDiv = document.querySelector('.cart-div');
         cartDiv.innerHTML = `
