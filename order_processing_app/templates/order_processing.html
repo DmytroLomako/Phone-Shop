@@ -59,6 +59,9 @@
                 </div>
             </div>
             <h1>Отримувач: {{ username }}</h1>
+            {% if username == 'Anonymous' %}
+                <div class="phone-div"><h1>Log In or enter your phone number: </h1><input class="phone-number" type="text" value="+380"></div>
+            {% endif %}
         </div>
         <div id="order-summary-div">
             <form id="order-summary" action="/order" method="post">
@@ -84,9 +87,10 @@
                     {% endif %}
                 </div>
                 <div style="width: 0px; height: 10px;"></div>
-                {% if username == 'Anonymous' %}<button class="button-submit-order" disabled>{% else %}<button class="button-submit-order">{% endif %}
+                <button class="button-submit-order">
                     <input type="hidden" name="city" class="city-submit">
                     <input type="hidden" name="warehouse" class="warehouse-submit">
+                    <input type="hidden" name="phone" class="phone-submit">
                     Підтвердити
                 </button>
             </form>

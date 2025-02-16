@@ -182,6 +182,7 @@ function changeTotalPrice(priceElem, change = 1){
 
 for (let i = 0; i < buttonList.length; i++) {
     buttonList[i].addEventListener('click', (event) => {
+        let cartItem;
         try {
             let productId = buttonList[i].id.split('-')[1];
             let oldProduct = document.querySelector(`.cartProduct-${productId}`)
@@ -192,7 +193,7 @@ for (let i = 0; i < buttonList.length; i++) {
                 changeTotalPrice(productItem.querySelector('h1'))
             } else{
                 let productsInCart = document.querySelector('.cart-div');
-                let cartItem = document.createElement('div');
+                cartItem = document.createElement('div');
                 changeTotalPrice(productItem.querySelector('h1'))
                 cartItem.classList.add(`cartProduct-${productId}`)
                 cartItem.innerHTML = `
@@ -207,9 +208,9 @@ for (let i = 0; i < buttonList.length; i++) {
                         </button>
                         <div class="cart-add-price">
                             <div class="cart-add">
-                                <svg width="16" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 1.5H15.5" stroke="#7C7C7C" stroke-width="2"/></svg>
+                                <svg class="minus-button" width="16" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 1.5H15.5" stroke="#7C7C7C" stroke-width="2"/></svg>
                                 <input type="number" min="1" max="100" value="1" class="product-count">
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 7.5H15.5" stroke="#7C7C7C" stroke-width="2"/><path d="M8 0V15" stroke="#7C7C7C" stroke-width="2"/></svg>
+                                <svg class="plus-button" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 7.5H15.5" stroke="#7C7C7C" stroke-width="2"/><path d="M8 0V15" stroke="#7C7C7C" stroke-width="2"/></svg>
                             </div>
                             <h2>${productItem.querySelector('h1').textContent}</h2>
                         </div>
@@ -227,7 +228,7 @@ for (let i = 0; i < buttonList.length; i++) {
                     <h1>Кошик</h1>
                     <svg class="cancel-cart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect class="cancel" width="30" height="30" fill="url(#pattern0_137_270_4)"/><defs><pattern id="pattern0_137_270_4" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_137_270" transform="scale(0.0104167)"/></pattern><image id="image0_137_270" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACqUlEQVR4nO2dQXITMRBFtYeww5wjhGPkBgkLWMHxHA4AVdZciKzDo6aYKaYMrtiZkbpb+u8ATvf741hSlHZKQgghhBBCCCGEEEKI2AA74Ba4SUEBbqYedikSwB3wyF++AVcpCMBr4GFR/9jLfYoA8Al44l8G4E1yDvAK+P6f+n8BX5NngM8n5IcIgdPy/YdwhnzXIfC8fL8hXCDfZQicL99fCC+Q7yoELpe/DOFLVPnLEK4CyrcPAfi4Uv5MtghhWmoeWM/o4K528e+O1vmhQmA7+TM/q27Wpt3h1uQaIRSQP3NbuvbjLTrRQqCc/JH3peo+1cw+UgiUlf+wdb01VhDVVkeRam2uMQLU2GyDOK5tUzw2isOaiuKpYRzVUhUPjeOgBlMsBdC7fEsRSL6dECTf7p2A5JseARwKvrbJMXkRCj+lfX/gNhjC0Jz8QCEMzcoPEMLQvHzHIQzdyHcYQu5OvqMQcrfyHYSQu5dvGILkG4aQ9eTbhZAl3zaAQQHYyZ9RCIbyZxSCofwZhYD9RqzfEBzI7zcER/L7C8Gh/H5CcCy//RACyG83hEDy2wthursznsFEu5ZyGK/UpMgUfvKzLmYZy091fla8X0c15c8ohDoisq6nO5Wfen8nTI3/8PCXLHoLwZP87kLwKL+bEDzLbz6ECPKbDmGaBRrmCICy/6mz37re55r5EPH8hVbG1RQa2HSocfjVysCm3TSmK+TJI9FHli3mQz9FPfZl26F9997mRIe4q8k2YyttB7iuCCGbb2TWD251Mz330hBcyF85uth2au6KEFzJf+Hwbl/yLwjBpfwLx9f7lH/GPGnX8s/8Agff8mfGZdnRaON9pBsG/FmiLueiPlafD73hl/hcp6AA11MPb61rEUIIIYQQQgghhBBCpHX8BouW3a92uMn6AAAAAElFTkSuQmCC"/></defs></svg>
                 </div>
-                <div class="cart-item">
+                <div class="cart-item cartProduct-${productId}">
                     <div class="image-handler">
                         <img src="${productItem.querySelector('img').src}" alt="">
                     </div>
@@ -239,22 +240,30 @@ for (let i = 0; i < buttonList.length; i++) {
                         </button>
                         <div class="cart-add-price">
                             <div class="cart-add">
-                                <svg width="16" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 1.5H15.5" stroke="#7C7C7C" stroke-width="2"/></svg>
+                                <svg class="minus-button" width="16" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 1.5H15.5" stroke="#7C7C7C" stroke-width="2"/></svg>
                                 <input type="number" min="1" max="100" value="1">
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 7.5H15.5" stroke="#7C7C7C" stroke-width="2"/><path d="M8 0V15" stroke="#7C7C7C" stroke-width="2"/></svg>
+                                <svg class="plus-button" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 7.5H15.5" stroke="#7C7C7C" stroke-width="2"/><path d="M8 0V15" stroke="#7C7C7C" stroke-width="2"/></svg>
                             </div>
                             <h2>${productItem.querySelector('h1').textContent}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="cart-total">
-                    <h1>${productItem.querySelector('h1').textContent} ₴</h1>
+                    <h1>${productItem.querySelector('h1').textContent}</h1>
                     <form action="/order_processing" method="post">
                         <button class="process-order-button">Оформити замовлення</button>
                     </form>
                 </div>
             `
+            cartItem = cartDiv.querySelector('.cart-item')
         } finally {
+            console.log(10)
+            let plus = cartItem.querySelector('.plus-button')
+            plus.addEventListener('click', () => {plusProduct(plus)})
+            let minus = cartItem.querySelector('.minus-button')
+            minus.addEventListener('click', () => {minusProduct(minus)})
+            let deleteButton = cartItem.querySelector('.delete-cart-item')
+            deleteButton.addEventListener('click', () => {deleteProduct(deleteButton)})
             let productId = buttonList[i].id.split('-')[1];
             if (document.cookie.includes('product')){
                 let currentProducts = document.cookie.split('=')[1]
@@ -273,57 +282,65 @@ for (let i = 0; i < buttonList.length; i++) {
 
 let plusButtonList = document.querySelectorAll('.plus-button')
 plusButtonList.forEach(plusButton => {
-    plusButton.addEventListener('click', () => {
-        let priceItem = plusButton.closest('.cart-add-price').querySelector('h2')
-        let productCount = plusButton.previousElementSibling
-        productCount.value = Number(productCount.value) + 1;
-        changeTotalPrice(priceItem)
-
-        let productId = plusButton.closest('.cart-item').classList[1].split('-')[1]
-        let currentProducts = document.cookie.split('=')[1]
-        document.cookie = `product = ${currentProducts},${productId}; path=/`;
-    })
+    plusButton.addEventListener('click', () => {plusProduct(plusButton)})
 })
+function plusProduct(plusButton){
+    let priceItem = plusButton.closest('.cart-add-price').querySelector('h2')
+    let productCount = plusButton.previousElementSibling
+    productCount.value = Number(productCount.value) + 1;
+    changeTotalPrice(priceItem)
+    let productClass = Array.from(plusButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
+    let productId = productClass.split('-')[1]
+    let currentProducts = document.cookie.split('=')[1]
+    console.log(productId);
+    console.log(currentProducts);
+    document.cookie = `product = ${currentProducts},${productId}; path=/`;
+    console.log(document.cookie);
+}
 
 let minusButtonList = document.querySelectorAll('.minus-button')
 minusButtonList.forEach(minusButton => {
-    minusButton.addEventListener('click', () => {
-        let priceItem = minusButton.closest('.cart-add-price').querySelector('h2')
-        let productCount = minusButton.nextElementSibling
-        if (productCount.value > 1){
-            productCount.value = Number(productCount.value) - 1;
-            changeTotalPrice(priceItem, change = -1)
-            let productId = minusButton.closest('.cart-item').classList[1].split('-')[1]
-            let currentProducts = document.cookie.split('=')[1].split(',')
-            let indexElem = currentProducts.indexOf(productId)
-            currentProducts.splice(indexElem, 1)
-            document.cookie = `product = ${currentProducts.join(',')}; path=/`
-        }
-    })
+    minusButton.addEventListener('click', () => {minusProduct(minusButton)})
 })
+function minusProduct(minusButton){
+    let priceItem = minusButton.closest('.cart-add-price').querySelector('h2')
+    let productCount = minusButton.nextElementSibling
+    if (productCount.value > 1){
+        productCount.value = Number(productCount.value) - 1;
+        changeTotalPrice(priceItem, change = -1)
+        console.log(minusButton.closest('.cart-item').classList)
+        let productClass = Array.from(minButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
+        let productId = productClass.split('-')[1]
+        let currentProducts = document.cookie.split('=')[1].split(',')
+        let indexElem = currentProducts.indexOf(productId)
+        currentProducts.splice(indexElem, 1)
+        document.cookie = `product = ${currentProducts.join(',')}; path=/`
+    }
+}
 
 let buttonDeleteProduct = document.querySelectorAll('.delete-cart-item');
 buttonDeleteProduct.forEach(button => {
-    button.addEventListener('click', (event) => {
-        let cartItem = button.closest('.cart-item');
-        let countProduct = cartItem.querySelector('.product-count').value;
-        changeTotalPrice(cartItem.querySelector('h2'), change = -countProduct)
-        cartItem.remove();
-
-        let productId = button.id.split('-')[1];
-        let currentProducts = document.cookie.split('=')[1].split(',')
-        currentProducts = currentProducts.filter(product => product !== productId);
-        document.cookie = `product = ${currentProducts.join(',')}; path=/`
-        if (currentProducts.length == 0){
-            let cartDiv = document.querySelector('.cart-div');
-            cartDiv.innerHTML = `
-                <div class="cart-header">
-                    <h1>Кошик</h1>
-                    <svg class="cancel-cart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect class="cancel" width="30" height="30" fill="url(#pattern0_137_270_4)"/><defs><pattern id="pattern0_137_270_4" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_137_270" transform="scale(0.0104167)"/></pattern><image id="image0_137_270" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACqUlEQVR4nO2dQXITMRBFtYeww5wjhGPkBgkLWMHxHA4AVdZciKzDo6aYKaYMrtiZkbpb+u8ATvf741hSlHZKQgghhBBCCCGEEEKI2AA74Ba4SUEBbqYedikSwB3wyF++AVcpCMBr4GFR/9jLfYoA8Al44l8G4E1yDvAK+P6f+n8BX5NngM8n5IcIgdPy/YdwhnzXIfC8fL8hXCDfZQicL99fCC+Q7yoELpe/DOFLVPnLEK4CyrcPAfi4Uv5MtghhWmoeWM/o4K528e+O1vmhQmA7+TM/q27Wpt3h1uQaIRSQP3NbuvbjLTrRQqCc/JH3peo+1cw+UgiUlf+wdb01VhDVVkeRam2uMQLU2GyDOK5tUzw2isOaiuKpYRzVUhUPjeOgBlMsBdC7fEsRSL6dECTf7p2A5JseARwKvrbJMXkRCj+lfX/gNhjC0Jz8QCEMzcoPEMLQvHzHIQzdyHcYQu5OvqMQcrfyHYSQu5dvGILkG4aQ9eTbhZAl3zaAQQHYyZ9RCIbyZxSCofwZhYD9RqzfEBzI7zcER/L7C8Gh/H5CcCy//RACyG83hEDy2wthursznsFEu5ZyGK/UpMgUfvKzLmYZy091fla8X0c15c8ohDoisq6nO5Wfen8nTI3/8PCXLHoLwZP87kLwKL+bEDzLbz6ECPKbDmGaBRrmCICy/6mz37re55r5EPH8hVbG1RQa2HSocfjVysCm3TSmK+TJI9FHli3mQz9FPfZl26F9997mRIe4q8k2YyttB7iuCCGbb2TWD251Mz330hBcyF85uth2au6KEFzJf+Hwbl/yLwjBpfwLx9f7lH/GPGnX8s/8Agff8mfGZdnRaON9pBsG/FmiLueiPlafD73hl/hcp6AA11MPb61rEUIIIYQQQgghhBBCpHX8BouW3a92uMn6AAAAAElFTkSuQmCC"/></defs></svg>
-                </div>
-                <div id="empty-cart-id"><img src="/home/img/empty_cart.png"></div>
-                <h1 class="empty-cart-text">Кошик порожній</h1>
-            `
-        }
-    })
+    button.addEventListener('click', () => {deleteProduct(button)})
 })
+function deleteProduct(button){
+    let cartItem = button.closest('.cart-item');
+    let countProduct = cartItem.querySelector('.product-count').value;
+    changeTotalPrice(cartItem.querySelector('h2'), change = -countProduct)
+    cartItem.remove();
+
+    let productId = button.id.split('-')[1];
+    let currentProducts = document.cookie.split('=')[1].split(',')
+    currentProducts = currentProducts.filter(product => product !== productId);
+    document.cookie = `product = ${currentProducts.join(',')}; path=/`
+    if (currentProducts.length == 0){
+        let cartDiv = document.querySelector('.cart-div');
+        cartDiv.innerHTML = `
+            <div class="cart-header">
+                <h1>Кошик</h1>
+                <svg class="cancel-cart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect class="cancel" width="30" height="30" fill="url(#pattern0_137_270_4)"/><defs><pattern id="pattern0_137_270_4" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_137_270" transform="scale(0.0104167)"/></pattern><image id="image0_137_270" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACqUlEQVR4nO2dQXITMRBFtYeww5wjhGPkBgkLWMHxHA4AVdZciKzDo6aYKaYMrtiZkbpb+u8ATvf741hSlHZKQgghhBBCCCGEEEKI2AA74Ba4SUEBbqYedikSwB3wyF++AVcpCMBr4GFR/9jLfYoA8Al44l8G4E1yDvAK+P6f+n8BX5NngM8n5IcIgdPy/YdwhnzXIfC8fL8hXCDfZQicL99fCC+Q7yoELpe/DOFLVPnLEK4CyrcPAfi4Uv5MtghhWmoeWM/o4K528e+O1vmhQmA7+TM/q27Wpt3h1uQaIRSQP3NbuvbjLTrRQqCc/JH3peo+1cw+UgiUlf+wdb01VhDVVkeRam2uMQLU2GyDOK5tUzw2isOaiuKpYRzVUhUPjeOgBlMsBdC7fEsRSL6dECTf7p2A5JseARwKvrbJMXkRCj+lfX/gNhjC0Jz8QCEMzcoPEMLQvHzHIQzdyHcYQu5OvqMQcrfyHYSQu5dvGILkG4aQ9eTbhZAl3zaAQQHYyZ9RCIbyZxSCofwZhYD9RqzfEBzI7zcER/L7C8Gh/H5CcCy//RACyG83hEDy2wthursznsFEu5ZyGK/UpMgUfvKzLmYZy091fla8X0c15c8ohDoisq6nO5Wfen8nTI3/8PCXLHoLwZP87kLwKL+bEDzLbz6ECPKbDmGaBRrmCICy/6mz37re55r5EPH8hVbG1RQa2HSocfjVysCm3TSmK+TJI9FHli3mQz9FPfZl26F9997mRIe4q8k2YyttB7iuCCGbb2TWD251Mz330hBcyF85uth2au6KEFzJf+Hwbl/yLwjBpfwLx9f7lH/GPGnX8s/8Agff8mfGZdnRaON9pBsG/FmiLueiPlafD73hl/hcp6AA11MPb61rEUIIIYQQQgghhBBCpHX8BouW3a92uMn6AAAAAElFTkSuQmCC"/></defs></svg>
+            </div>
+            <div id="empty-cart-id"><img src="/home/img/empty_cart.png"></div>
+            <h1 class="empty-cart-text">Кошик порожній</h1>
+        `
+    }
+}

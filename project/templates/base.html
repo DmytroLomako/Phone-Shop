@@ -145,9 +145,9 @@
                     {% else %}
                         <h1>{{ summary_price }} ₴</h1>
                     {% endif %}
-                    <form action="/order_processing" method="post">
+                    <a href="/order_processing">
                         <button class="process-order-button">Оформити замовлення</button>
-                    </form>
+                    </a>
                 </div>
             {% else %}
                 <div id="empty-cart-id"><img src="{{ url_for('home_app.static', filename='img/empty_cart.png') }}"></div>

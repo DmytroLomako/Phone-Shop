@@ -157,6 +157,23 @@ datalist{
     display: flex;
     gap: 20px;
 }
+.phone-div{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.phone-div h1{
+    min-width: fit-content;
+}
+.phone-number{
+    width: 155px;
+    padding: 10px 10px;
+    font-size: 18px;
+    border: 1px solid #D4D4D4;
+    border-radius: 10px;
+}
 #input-handler{
     position: relative;
     display: flex;

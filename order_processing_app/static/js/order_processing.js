@@ -4,6 +4,8 @@ let inputWarehouse = document.querySelector('.warehouse-input')
 let buttonSubmit = document.querySelector('.button-submit-order')
 let inputCitySubmit = document.querySelector('.city-submit')
 let inputWarehouseSubmit = document.querySelector('.warehouse-submit')
+let phoneInput = document.querySelector('.phone-number')
+let inputPhoneSubmit = document.querySelector('.phone-submit')
 
 let city;
 
@@ -22,6 +24,13 @@ buttonSubmit.addEventListener('click', (event) => {
     let chosenWarehouse = document.getElementById(`warehouse-${inputWarehouse.value}`);
     inputCitySubmit.value = inputCities.value;
     inputWarehouseSubmit.value = inputWarehouse.value;
+    if (phoneInput){
+        if (phoneInput.value.length > 6){
+            inputPhoneSubmit.value = phoneInput.value
+        } else {
+            event.preventDefault();
+        }
+    }
     if (!chosenCity || !chosenWarehouse){
         event.preventDefault();
     } /* else {
