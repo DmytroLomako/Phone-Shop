@@ -320,7 +320,7 @@ function minusProduct(minusButton){
     if (productCount.value > 1){
         productCount.value = Number(productCount.value) - 1;
         changeTotalPrice(priceItem, change = -1);
-        let productClass = Array.from(minButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
+        let productClass = Array.from(minusButton.closest('.cart-item').classList).find(className => className.includes('cartProduct'));
         let productId = productClass.split('-')[1];
         let currentProducts = document.cookie.split('=')[1].split(',');
         let indexElem = currentProducts.indexOf(productId);

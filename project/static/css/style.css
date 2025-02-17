@@ -282,6 +282,7 @@ header{
 }
 .cart-item-description{
     width: 100%;
+    color: black;
 }
 .cart-add-price{
     width: fit-content;
