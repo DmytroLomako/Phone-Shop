@@ -58,9 +58,10 @@
                     </button> -->
                 </div>
             </div>
-            <h1>Отримувач: {{ username }}</h1>
             {% if username == 'Anonymous' %}
                 <div class="phone-div"><h1>Log In or enter your phone number: </h1><input class="phone-number" type="text" value="+380"></div>
+            {% else %}
+                <h1>Отримувач: {{ username }}</h1>
             {% endif %}
         </div>
         <div id="order-summary-div">

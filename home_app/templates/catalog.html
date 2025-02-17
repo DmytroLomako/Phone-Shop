@@ -39,6 +39,17 @@
                     <li class="content-l">
                         <a href="/product/{{ product.id }}&{{ product.color }}&{{ product.memory }}" class="phone-link">
                             <div id="catalog-img-handler"><img src="{{ url_for('home_app.static', filename='img/phones/' + product.image) }}" class="phone"></div>
+                        </a>
+                        <div class="product-colors">
+                            {% for diversity in product.product_diversity|unique(attribute="color") %}
+                                {% if product.color == diversity.color %}
+                                    <a href="/product/{{ product.id }}&{{ diversity.color }}&{{ product.memory }}" class="color-frame" id="color-frame-active"><div class="color" style="background-color: {{ diversity.color }};"></div></a>
+                                {% else %}
+                                    <a href="/product/{{ product.id }}&{{ diversity.color }}&{{ product.memory }}" class="color-frame" id="color-frame"><div class="color" style="background-color: {{ diversity.color }};"></div></a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <a href="/product/{{ product.id }}&{{ product.color }}&{{ product.memory }}" class="phone-link">
                             <h2>{{ product.description }}</h2>
                         </a>
                         <div class="price">

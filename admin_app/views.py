@@ -39,6 +39,7 @@ def render_admin():
                 product_diversity = ProductDiversity(price=price, color=color, memory=memory, description=description, image=image_path, product=product)
                 database.session.add(product_diversity)
                 database.session.commit()
+                return flask.redirect('/admin')
             elif 'edit_product_id' in flask.request.form:
                 product_id = flask.request.form.get('edit_product_id')
                 edit_product = Product.query.get(product_id)
@@ -97,5 +98,6 @@ def render_admin():
                     pass
                 database.session.delete(product)
                 database.session.commit()
+                return flask.redirect('/admin')
         return flask.render_template('admin.html', all_products=all_products, list_colors=list_colors, list_memories=list_memories, list_images=list_images, account=current_user.is_authenticated, user=current_user, list_product_cart=list_product_cart, summary_price=summary_price, edit_product=edit_product)
     flask.abort(404)

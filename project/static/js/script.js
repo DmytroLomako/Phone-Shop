@@ -3,7 +3,15 @@ const overlay = document.querySelector('.overlay');
 let searchForm = document.querySelector('.search-form');
 let badge = document.querySelector('.badge');
 
-badge.textContent = document.cookie.split('=')[1].split(',').length
+try{
+    if ((document.cookie.split('=')[1].split(',')) == ''){
+        badge.textContent = '0';
+    } else {
+        badge.textContent = document.cookie.split('=')[1].split(',').length
+    }
+} catch {
+    badge.textContent = '0';
+}
 if (badge.textContent == '0'){
     badge.style.display = 'none';
 }
@@ -261,6 +269,7 @@ for (let i = 0; i < buttonList.length; i++) {
                 </div>
             `
             cartItem = cartDiv.querySelector('.cart-item');
+            badge.style.display = 'flex';
         } finally {
             let plus = cartItem.querySelector('.plus-button');
             plus.addEventListener('click', () => {plusProduct(plus)});
@@ -334,6 +343,9 @@ function deleteProduct(button){
     let productId = button.id.split('-')[1];
     let currentProducts = document.cookie.split('=')[1].split(',');
     badge.textContent = Number(badge.textContent) - Number(countProduct);
+    if (badge.textContent == '0'){
+        badge.style.display = 'none';
+    }
     currentProducts = currentProducts.filter(product => product !== productId);
     document.cookie = `product = ${currentProducts.join(',')}; path=/`;
     if (currentProducts.length == 0){

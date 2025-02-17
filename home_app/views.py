@@ -97,14 +97,11 @@ def render_home(error = None):
     list_products, search, brand, max_price, low_price, max_price_all, min_price_all, list_products_price_filter, price_filter = get_product(list_all_products)
     list_brands = []
     list_search_brand = []
-    print(brand, 'sgkhdskjghjksghjgsjhgjsg')
     if not brand:
-        print(1)
         for product in list_products:
             if product.brand not in list_brands:
                 list_brands.append(product.brand)
     else: 
-        print(2)
         list_search_brand = brand
         if price_filter:
             list_all_products = list_products_price_filter
@@ -117,9 +114,17 @@ def render_home(error = None):
 
 def render_product(product_id, product_color, product_memory, error = None):
     list_product_cart, summary_price = get_cart()
-    list_colors = ['black', 'violet', 'midnightblue', 'darkblue', 'gold', 'green', 'red']
-    list_memory = ['64GB', '128GB', '256GB', '512GB', '1TB']
+    list_memory = []
+    list_colors = []
     product = Product.query.get(product_id)
+    active_diversity = None
+    for diversity in product.product_diversity:
+        if diversity.color not in list_colors:
+            list_colors.append(diversity.color)
+        if diversity.memory not in list_memory:
+            list_memory.append(diversity.memory)
+        if diversity.color == product_color and diversity.memory == product_memory:
+            active_diversity = diversity
     color_index = list_colors.index(product_color)
     memory_index = list_memory.index(product_memory)
     list_colors[color_index] += ' active'
@@ -139,4 +144,4 @@ def render_product(product_id, product_color, product_memory, error = None):
                 product_color = flask.request.form.get('color_button')
             return flask.redirect(f'/product/{product_id}&{product_color}&{product_memory}')
     user_auth, error_reg, error_auth, error_password = get_user_info(error)
-    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, account=current_user.is_authenticated, user=current_user)
+    return flask.render_template('product.html', product = product, colors = list_colors, memories = list_memory, active_color = product_color, active_memory = product_memory, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_product_cart = list_product_cart, summary_price = summary_price, account=current_user.is_authenticated, user=current_user, active_diversity=active_diversity)

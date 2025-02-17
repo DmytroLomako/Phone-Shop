@@ -9,9 +9,9 @@
 
 {% block content %}
     <main>
-        <div id="image-div"><img src="{{ url_for('home_app.static', filename='img/phones/' + product.image) }}" id="phone"></div>
+        <div id="image-div"><img src="{{ url_for('home_app.static', filename='img/phones/' + active_diversity.image) }}" id="phone"></div>
         <div class="product-info">
-            <h1 class="phone-description">{{ product.description }}</h1>
+            <h1 class="phone-description">{{ active_diversity.description }}</h1>
             <div class="chosen-color-div">
                 <h1>Колiр: </h1>
                 <h1 class="chosen-color-text">{{ active_color }}</h1>
@@ -41,7 +41,7 @@
             <div class="buy-product-frame">
                 <p>Є в наявності</p>
                 <div class="buy-product">
-                    <h1>{{ product.price }}</h1>
+                    <h1>{{ active_diversity.price }}</h1>
                     <a href="/order_processing/{{ product.id }}" style="text-decoration: none;"><button class="buy-button"><img src="{{ url_for('home_app.static', filename='img/cart.png') }}"> Купити</button></a>
                     <button class="add-to-cart-button" id="product-{{ product.id }}">Додати до кошика</button>
                     <button class="button-comparison"><img src="{{ url_for('home_app.static', filename='img/comparison_dark.png') }}"></button>         

@@ -21,6 +21,36 @@ main{
 .phone-link:hover{
     cursor: pointer;
 }
+.product-colors{
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+    gap: 5px;
+}
+.color-frame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    background-color: white;
+    box-sizing: border-box;
+}
+.color-frame:hover{
+    border: 1px solid #1d00d677;
+}
+#color-frame-active{
+    border: 1px solid #1D00D6;
+} 
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
 .brand-filters-list{
     width: 210px;
     flex-direction: column;
