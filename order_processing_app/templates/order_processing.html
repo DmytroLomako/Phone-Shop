@@ -4,6 +4,7 @@
 {% block title %}Lumin{% endblock %}
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('order_processing_app.static', filename='css/order_processing.css') }}">
+    <script src="https://unpkg.com/imask@7.6.1/dist/imask.js"></script>
     <script src="{{ url_for('order_processing_app.static', filename='js/order_processing.js') }}" defer></script>
 {% endblock %}
 
@@ -59,7 +60,7 @@
                 </div>
             </div>
             {% if username == 'Anonymous' %}
-                <div class="phone-div"><h1><a href=""></a>LogIn or enter your phone number: </h1><input class="phone-number" type="text" value="+380"></div>
+                <div class="phone-div"><h1><a href=""></a>LogIn or enter your phone number: </h1><input class="phone-number" id="phone-number" type="text" value="+380"></div>
             {% else %}
                 <h1>Отримувач: {{ username }}</h1>
             {% endif %}

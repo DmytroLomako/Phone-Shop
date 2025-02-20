@@ -19,13 +19,21 @@ inputCities.addEventListener('blur', () => {
     }
 })
 
+if (phoneInput){
+    IMask(
+        document.getElementById('phone-number'), {
+            mask: '+{38} 000 000 00 00'
+        }
+    )
+}
+
 buttonSubmit.addEventListener('click', (event) => {
     let chosenCity = document.getElementById(`city-${inputCities.value}`);
     let chosenWarehouse = document.getElementById(`warehouse-${inputWarehouse.value}`);
     inputCitySubmit.value = inputCities.value;
     inputWarehouseSubmit.value = inputWarehouse.value;
     if (phoneInput){
-        if (phoneInput.value.length > 6){
+        if (phoneInput.value.length === 17){
             inputPhoneSubmit.value = phoneInput.value
         } else {
             event.preventDefault();
