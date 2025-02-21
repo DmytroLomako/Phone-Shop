@@ -166,7 +166,7 @@ main{
     backdrop-filter: blur(10px);
     z-index: 2;
 }
-.new-product-div, .edit-main-product{
+.add-div, .edit-main-product{
     display: none;
     width: 460px;
     height: fit-content;
@@ -197,12 +197,12 @@ main{
     font-size: 32px;
     font-weight: 500;
 }
-.cancel-new-product, .cancel-choose-edit, .cancel-edit-main{
+.cancel-new-product, .cancel-choose-edit, .cancel-edit-main, .cancel-new-diversity{
     width: 30px;
     transition: all 0.3s ease;
     filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
 }
-.cancel-new-product:hover, .cancel-choose-edit:hover, .cancel-edit-main:hover{
+.cancel-new-product:hover, .cancel-choose-edit:hover, .cancel-edit-main:hover, .cancel-new-diversity:hover{
     transform: scale(1.2);
     filter: drop-shadow(0px 4px 4px rgba(132, 132, 132, 0.25));
     cursor: pointer;
@@ -303,7 +303,7 @@ main{
     cursor: pointer;
     background-color: rgb(32, 32, 32);
 }
-.choose-edit{
+.div-show{
     width: 340px;
     height: 277px;
     background-color: hsla(0, 0%, 0%, 0.698);
@@ -316,19 +316,19 @@ main{
     border-radius: 30px;
     position: relative;
 }
-.choose-edit h1{
+.div-show h1{
     color: white;
 }
-.choose-edit button{
+.div-show button{
     background-color: rgba(0, 0, 0, 0);
 }
-.choose-edit p{
+.div-show p{
     color: #5A95FF;
     text-decoration: none;
     font-size: 20px;
     position: relative;
 }
-.choose-edit p:hover{
+.div-show p:hover{
     cursor: pointer;
 }
 .cancel-choose-edit{
@@ -336,7 +336,7 @@ main{
     top: 15px;
     right: 15px;
 }
-.choose-edit p::after, .choose-edit p::before{
+.div-show p::after, .div-show p::before{
     content: '';
     position: absolute;
     width: 0;
@@ -345,12 +345,19 @@ main{
     background-color: #5A95FF;
     transition: width 0.6s;
 }
-.choose-edit p::after{
+.div-show p::after{
     left: 50%;
 }
-.choose-edit p::before{
+.div-show p::before{
     right: 50%;
 }
-.choose-edit p:hover::after, .choose-edit p:hover::before{
+.div-show p:hover::after, .div-show p:hover::before{
     width: 50%;
+}
+.show_divercities{
+    max-height: 50%;
+    padding: 40px;
+    height: auto;
+    width: auto;
+    flex-wrap: wrap;
 }

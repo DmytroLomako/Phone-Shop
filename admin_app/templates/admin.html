@@ -67,7 +67,7 @@
             {% endfor %}
         </ul>
         {% if edit_product %}<div class="product-overlay" style="display: flex;">{% else %}<div class="product-overlay">{% endif %}
-            <div class="new-product-div">
+            <div class="new-product-div add-div">
                 <div class="new-product-header">
                     <h1>Новий продукт</h1>
                     <img class="cancel-new-product" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
@@ -113,15 +113,17 @@
                     <div id="add-button-handler"><button type="submit" class="add-button">Додати</button></div>
                 </form>
             </div>
-            <div class="choose-edit">
+            <div class="choose-edit div-show">
                 <h1></h1>
                 <button class="edit-main-product-text"><p>Edit Main Product</p></button>
                 <form action="" method="post" class="edit-main-product-form" style="display: none;"><input type="hidden" name="edit_product_id" value=""></form>
                 <button class="edit-diversity-product-text"><p>Edit Product Diversities</p></button>
+                <form action="" method="post" class="edit-product-diversity-form" style="display: none;"><input type="hidden" name="edit_diversity_id" value=""></form>
                 <button class="add-diversity-product-text"><p>Add Product Diversity</p></button>
+                <form action="" method="post" class="add-diversity-product-form" style="display: none;"><input type="hidden" name="add_diversity_id" value=""></form>
                 <img class="cancel-choose-edit" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
             </div>
-            {% if edit_product %}
+            {% if edit == 'product' %}
                 <div class="edit-main-product" style="display: flex;">
                     <div class="new-product-header">
                         <h1>Main Product</h1>
@@ -169,6 +171,53 @@
                         <div id="add-button-handler"><button type="submit" class="add-button">Змінити</button></div>
                     </form>
                 </div>
+            {% elif edit == 'diversities' %}
+                {% if action == 'show' %}
+                    <div class="show_divercities div-show" style="display: flex;">
+                        {% for diversity in edit_product.product_diversity %}
+                            <p>{{ diversity }}</p>
+                        {% endfor %}
+                    </div>
+                {% elif action == 'add' %}
+                    <div class="new-diversity-div add-div" style="display: flex;">
+                        <div class="new-product-header">
+                            <h1>Новий Варіант</h1>
+                            <img class="cancel-new-diversity" src="{{ url_for('admin_app.static', filename='img/cross.png') }}" alt="">
+                        </div>
+                        <form class="new-product-info-container" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="add_diversity_form" value="{{ edit_product.id }}">
+                            <div class="new-product-input">
+                                <input class="input" type="file" accept="image/webp" name="image">
+                                <label>Image</label>
+                            </div>
+                            <div class="new-product-input">
+                                <input class="input" autocomplete="off" type="text" placeholder="" name="price" required>
+                                <label>Price</label>
+                            </div>
+                            <div class="new-product-input">
+                                <input class="input" autocomplete="off" type="text" placeholder="" name="color" required>
+                                <label>Color</label>
+                            </div>
+                            <div class="new-product-input new-product-input-memory">
+                                <input class="input" autocomplete="off" type="text" placeholder="" name="memory" required>
+                                <label>Memory</label>
+                                <button type="button" class="dropdown-menu-button"><img src="{{ url_for('home_app.static', filename='img/arrow-down.png') }}" class="arrow"></button>
+                                <div class="dropdown-menu">
+                                    <button type="button">64GB</button>
+                                    <button type="button">128GB</button>
+                                    <button type="button">256GB</button>
+                                    <button type="button">512GB</button>
+                                    <button type="button">1024GB</button>
+                                </div>
+                            </div>
+                            <div class="new-product-input">
+                                <textarea class="input" style="height: 70px" type="text" placeholder="" name="description" required></textarea>
+                                <label>Description</label>
+                            </div>
+                            <div id="add-button-handler"><button type="submit" class="add-button">Додати</button></div>
+                        </form>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>

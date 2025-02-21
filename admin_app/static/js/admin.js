@@ -1,11 +1,10 @@
-let memoryInput = document.querySelector('.new-product-input-memory input');
-let dropdownMenuButton = document.querySelector('dropdown-menu-button');
-let dropdownMenu = document.querySelector('.dropdown-menu');
-let dropdownButtons = dropdownMenu.querySelectorAll('button');
+let dropdownMenu = document.querySelectorAll('.dropdown-menu');
 let addNewProductText = document.querySelector('.add-new-product-text');
 let cancelAddNewProduct = document.querySelector('.cancel-new-product');
+let cancelAddNewDiversity = document.querySelector('.cancel-new-diversity');
 let overlayProduct = document.querySelector('.product-overlay');
 let newProductDiv = document.querySelector('.new-product-div');
+let newDiversityDiv = document.querySelector('.new-diversity-div');
 
 addNewProductText.addEventListener('click', () => {
     overlayProduct.style.display = 'flex';
@@ -17,32 +16,44 @@ cancelAddNewProduct.addEventListener('click', () => {
     newProductDiv.style.display = 'none';
 })
 
-if (dropdownMenuButton){
-    dropdownMenuButton.addEventListener('click', () => {
-        if (dropdownMenu.style.display === 'flex'){
-            dropdownMenu.style.display = 'none';
-            dropdownMenuButton.style.transform = 'rotate(0)';
+cancelAddNewDiversity.addEventListener('click', () => {
+    overlayProduct.style.display = 'none';
+    newDiversityDiv.style.display = 'none';
+})
+
+
+dropdownMenu.forEach(menu => {
+    let memoryInput = menu.parentElement.querySelector('.input');
+    let dropdownButton = menu.previousElementSibling;
+    let dropdownButtons = menu.querySelectorAll('button');
+    dropdownButton.addEventListener('click', () => {
+        if (menu.style.display === 'flex'){
+            menu.style.display = 'none';
+            dropdownButton.style.transform = 'rotate(0)';
         } else{
-            dropdownMenu.style.display = 'flex';
-            dropdownMenuButton.style.transform = 'rotate(180deg)';
+            menu.style.display = 'flex';
+            dropdownButton.style.transform = 'rotate(180deg)';
         }
     })
-}
-
-dropdownButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        memoryInput.value = button.textContent;
-        dropdownMenu.style.display = 'none';
+    dropdownButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            memoryInput.value = button.textContent;
+            menu.style.display = 'none';
+            dropdownButton.style.transform = 'rotate(0)';
+        })
     })
 })
 
-let buttonEditList = document.querySelectorAll('.button-edit')
-let chooseEditDiv = document.querySelector('.choose-edit')
-let cancelChooseEdit = document.querySelector('.cancel-choose-edit')
-let editMainProductText = document.querySelector('.edit-main-product-text')
-let editMainProductForm = document.querySelector('.edit-main-product-form')
-let editProductDiversityText = document.querySelector('.edit-diversity-product-text')
-let addProductDiversityText = document.querySelector('.add-diversity-product-text')
+
+let buttonEditList = document.querySelectorAll('.button-edit');
+let chooseEditDiv = document.querySelector('.choose-edit');
+let cancelChooseEdit = document.querySelector('.cancel-choose-edit');
+let editMainProductText = document.querySelector('.edit-main-product-text');
+let editMainProductForm = document.querySelector('.edit-main-product-form');
+let editProductDiversityText = document.querySelector('.edit-diversity-product-text');
+let editProductDiversityForm = document.querySelector('.edit-product-diversity-form');
+let addProductDiversityText = document.querySelector('.add-diversity-product-text');
+let addProductDiversityForm = document.querySelector('.add-diversity-product-form');
 
 buttonEditList.forEach(button => {
     button.addEventListener('click', () => {
@@ -62,6 +73,18 @@ editMainProductText.addEventListener('click', () => {
     chooseEditDiv.style.display = 'none';
     editMainProductForm.querySelector('input').value = chooseEditDiv.id;
     editMainProductForm.submit();
+})
+
+editProductDiversityText.addEventListener('click', () => {
+    chooseEditDiv.style.display = 'none';
+    editProductDiversityForm.querySelector('input').value = chooseEditDiv.id;
+    editProductDiversityForm.submit();
+})
+
+addProductDiversityText.addEventListener('click', () => {
+    chooseEditDiv.style.display = 'none';
+    addProductDiversityForm.querySelector('input').value = chooseEditDiv.id;
+    addProductDiversityForm.submit();
 })
 
 let editMainProduct = document.querySelector('.edit-main-product')
