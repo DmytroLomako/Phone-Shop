@@ -305,7 +305,7 @@ main{
 }
 .div-show{
     width: 340px;
-    height: 277px;
+    padding: 20px 0;
     background-color: hsla(0, 0%, 0%, 0.698);
     display: none;
     flex-direction: column;

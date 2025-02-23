@@ -44,20 +44,21 @@ def render_order_processing(id = False, error = None):
         username = current_user.username
     if flask.request.method == 'POST':
         city = flask.request.form.get('city-div')
-        data = {
-            "apiKey": api,
-            "modelName": "Address",
-            "calledMethod": "getWarehouses",
-            "methodProperties": {
-                "CityName": city
-            },
-        }
-        
-        data = json.dumps(data)
-        info = requests.post(url=url, data=data)
-        response = json.loads(info.text)
-        for i in response['data']:
-            list_warehouses.append(i['Description'])
+        if city:
+            data = {
+                "apiKey": api,
+                "modelName": "Address",
+                "calledMethod": "getWarehouses",
+                "methodProperties": {
+                    "CityName": city
+                },
+            }
+            
+            data = json.dumps(data)
+            info = requests.post(url=url, data=data)
+            response = json.loads(info.text)
+            for i in response['data']:
+                list_warehouses.append(i['Description'])
     user_auth, error_reg, error_auth, error_password = get_user_info(error)
     return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_warehouses=list_warehouses, city=city)
 
@@ -78,7 +79,8 @@ def render_order():
             for i in stickers_number:
                 stickers_number = stickers_number.replace(i, list_numbers[int(i)], 1)
             text += f'{product[0]} - {stickers_number} шт.\n'
-        asyncio.run(bot.send_message(id_admin, text))
+        # asyncio.run(bot.send_message(id_admin, text))
+        bot.send_message(id_admin, text)
         response = make_response(flask.redirect('/'))
         response.set_cookie('product', '')
         return response

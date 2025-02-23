@@ -16,10 +16,12 @@ cancelAddNewProduct.addEventListener('click', () => {
     newProductDiv.style.display = 'none';
 })
 
-cancelAddNewDiversity.addEventListener('click', () => {
-    overlayProduct.style.display = 'none';
-    newDiversityDiv.style.display = 'none';
-})
+if (cancelAddNewDiversity){
+    cancelAddNewDiversity.addEventListener('click', () => {
+        overlayProduct.style.display = 'none';
+        newDiversityDiv.style.display = 'none';
+    })
+}
 
 
 dropdownMenu.forEach(menu => {
