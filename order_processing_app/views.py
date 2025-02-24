@@ -1,4 +1,4 @@
-import flask, asyncio
+import flask
 from flask import make_response
 from project.telegram import bot, id_admin
 from home_app.models import Product
@@ -59,6 +59,8 @@ def render_order_processing(id = False, error = None):
             response = json.loads(info.text)
             for i in response['data']:
                 list_warehouses.append(i['Description'])
+        else:
+            city = ''
     user_auth, error_reg, error_auth, error_password = get_user_info(error)
     return flask.render_template('order_processing.html', list_product_cart = list_product_cart, summary_price = summary_price, username = username, account=current_user.is_authenticated, user=current_user, list_cities=list_cities, user_auth = user_auth, error = error, error_reg = error_reg, error_auth = error_auth, error_password = error_password, list_warehouses=list_warehouses, city=city)
 

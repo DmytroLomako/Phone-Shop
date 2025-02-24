@@ -68,6 +68,11 @@ def render_admin():
                 edit_product = Product.query.get(diversity_id)
                 edit = 'diversities'
                 action = 'add'
+            elif 'remove_diversity_id' in flask.request.form:
+                diversity_id = flask.request.form.get('remove_diversity_id')
+                edit_product = Product.query.get(diversity_id)
+                edit = 'diversities'
+                action = 'remove'
             elif 'edit_main_product_form' in flask.request.form:
                 product_id = flask.request.form.get('edit_main_product_form')
                 product = Product.query.get(product_id)
@@ -90,9 +95,11 @@ def render_admin():
                     os.rename(image_old_full_path, image_full_path)
                 except:
                     image_folder_path = os.path.abspath(__file__ + f'/../../home_app/static/img/phones/{image_folder}')
-                    image_old_folder_path = os.path.abspath(__file__ + f'/../../home_app/static/img/phones/{image_old_path.split('/')[0]}')
+                    old_path_split = image_old_path.split('/')[0]
+                    image_old_folder_path = os.path.abspath(__file__ + f'/../../home_app/static/img/phones/{old_path_split}')
                     os.rename(image_old_folder_path, image_folder_path)
-                    os.rename(f'{image_folder_path}/{image_old_path.split('/')[1]}', image_full_path)
+                    old_path_split = image_old_path.split('/')[1]
+                    os.rename(f'{image_folder_path}/{old_path_split}', image_full_path)
                     
                 if image:
                     image.save(image_full_path)
@@ -106,6 +113,12 @@ def render_admin():
                 product.description = description
                 
                 database.session.commit()
+            elif 'remove-diversity-input' in flask.request.form:
+                diversity_id = flask.request.form.get('remove-diversity-input')
+                diversity = ProductDiversity.query.get(diversity_id)
+                database.session.delete(diversity)
+                database.session.commit()
+                return flask.redirect('/admin')
             else:
                 product_id = flask.request.form.get('product_id')
                 product = Product.query.get(product_id)

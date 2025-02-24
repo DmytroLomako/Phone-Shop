@@ -35,7 +35,8 @@ def render_auth():
                             int(referer.split('/')[-2])
                         else:
                             int(referer.split('/')[-1])
-                        return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-password')
+                        referer_split = referer.split('/')[-1]
+                        return flask.redirect(f'/order_processing/{referer_split}/error-password')
                     except:
                         return flask.redirect('/order_processing/error-password')
                 return flask.redirect('/error-password')
@@ -58,7 +59,8 @@ def render_auth():
                                 int(referer.split('/')[-2])
                             else:
                                 int(referer.split('/')[-1])
-                            return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-reg')
+                            referer_split = referer.split('/')[-1]
+                            return flask.redirect(f'/order_processing/{referer_split}/error-reg')
                         except:
                             return flask.redirect('/order_processing/error-reg')
                     return flask.redirect('/error-reg')
@@ -81,10 +83,12 @@ def render_auth():
                         try:
                             if 'error' in referer:
                                 int(referer.split('/')[-2])
-                                return flask.redirect(f'/order_processing/{referer.split('/')[-2]}/error-auth')
+                                referer_split = referer.split('/')[-2]
+                                return flask.redirect(f'/order_processing/{referer_split}/error-auth')
                             else:
                                 int(referer.split('/')[-1])
-                                return flask.redirect(f'/order_processing/{referer.split('/')[-1]}/error-auth')
+                                referer_split = referer.split('/')[-1]
+                                return flask.redirect(f'/order_processing/{referer_split}/error-auth')
                         except:
                             return flask.redirect('/order_processing/error-auth')
                     return flask.redirect('/error-auth')

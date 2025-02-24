@@ -1,27 +1,20 @@
 let dropdownMenu = document.querySelectorAll('.dropdown-menu');
-let addNewProductText = document.querySelector('.add-new-product-text');
-let cancelAddNewProduct = document.querySelector('.cancel-new-product');
-let cancelAddNewDiversity = document.querySelector('.cancel-new-diversity');
-let overlayProduct = document.querySelector('.product-overlay');
 let newProductDiv = document.querySelector('.new-product-div');
-let newDiversityDiv = document.querySelector('.new-diversity-div');
+let addNewProductText = document.querySelector('.add-new-product-text');
+let overlayProduct = document.querySelector('.product-overlay');
+let cancelButtons = document.querySelectorAll('.cancel')
 
 addNewProductText.addEventListener('click', () => {
     overlayProduct.style.display = 'flex';
     newProductDiv.style.display = 'flex';
 })
 
-cancelAddNewProduct.addEventListener('click', () => {
-    overlayProduct.style.display = 'none';
-    newProductDiv.style.display = 'none';
-})
-
-if (cancelAddNewDiversity){
-    cancelAddNewDiversity.addEventListener('click', () => {
+cancelButtons.forEach(button => {
+    button.addEventListener('click', () => {
         overlayProduct.style.display = 'none';
-        newDiversityDiv.style.display = 'none';
+        button.parentElement.parentElement.style.display = 'none';
     })
-}
+})
 
 
 dropdownMenu.forEach(menu => {
@@ -56,6 +49,8 @@ let editProductDiversityText = document.querySelector('.edit-diversity-product-t
 let editProductDiversityForm = document.querySelector('.edit-product-diversity-form');
 let addProductDiversityText = document.querySelector('.add-diversity-product-text');
 let addProductDiversityForm = document.querySelector('.add-diversity-product-form');
+let removeProductDiversityText = document.querySelector('.remove-diversity-product-text');
+let removeProductDiversityForm = document.querySelector('.remove-diversity-product-form');
 
 buttonEditList.forEach(button => {
     button.addEventListener('click', () => {
@@ -71,36 +66,35 @@ cancelChooseEdit.addEventListener('click', () => {
     overlayProduct.style.display = 'none';
 })
 
-editMainProductText.addEventListener('click', () => {
+function sendForm(form){
     chooseEditDiv.style.display = 'none';
-    editMainProductForm.querySelector('input').value = chooseEditDiv.id;
-    editMainProductForm.submit();
+    form.querySelector('input').value = chooseEditDiv.id;
+    form.submit();
+}
+
+editMainProductText.addEventListener('click', () => {
+    sendForm(editMainProductForm);
 })
 
 editProductDiversityText.addEventListener('click', () => {
-    chooseEditDiv.style.display = 'none';
-    editProductDiversityForm.querySelector('input').value = chooseEditDiv.id;
-    editProductDiversityForm.submit();
+    sendForm(editProductDiversityForm);
 })
 
 addProductDiversityText.addEventListener('click', () => {
-    chooseEditDiv.style.display = 'none';
-    addProductDiversityForm.querySelector('input').value = chooseEditDiv.id;
-    addProductDiversityForm.submit();
+    sendForm(addProductDiversityForm);
+})
+
+removeProductDiversityText.addEventListener('click', () => {
+    sendForm(removeProductDiversityForm);
 })
 
 let editMainProduct = document.querySelector('.edit-main-product')
-let cancelEditMainProduct = document.querySelector('.cancel-edit-main')
 let memoryInput2 = document.querySelector('.edit-product-input-memory input');
 let dropdownMenuButton2 = document.querySelector('.dropdown-menu-button2');
 let dropdownMenu2 = document.querySelector('.dropdown-menu2');
 
 if (editMainProduct){
     let dropdownButtons2 = dropdownMenu2.querySelectorAll('button');
-    cancelEditMainProduct.addEventListener('click', () => {
-        editMainProduct.style.display = 'none';
-        overlayProduct.style.display = 'none';
-    })
     dropdownMenuButton2.addEventListener('click', () => {
         if (dropdownMenu2.style.display === 'flex'){
             dropdownMenu2.style.display = 'none';
@@ -118,3 +112,19 @@ if (editMainProduct){
         })
     })
 }
+
+let showOrRemoveText = document.querySelectorAll('.show_or_remove_p');
+let editForm = document.querySelector('.edit-diversity-form');
+let removeForm = document.querySelector('.remove-diversity-form');
+
+showOrRemoveText.forEach(text => {
+    text.addEventListener('click', () => {
+        if (editForm){
+            editForm.querySelector('input').value = text.id;
+            editForm.submit();
+        } else if (removeForm){
+            removeForm.querySelector('input').value = text.id;
+            removeForm.submit();
+        }
+    })
+})
